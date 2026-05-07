@@ -73,7 +73,7 @@ def make_horizontal_rule() -> str:
     """가로 구분선 (테이블로 1행 1열 borderFill 적용 - 단순 구현)."""
     pid = next_id()
     return (
-        f'<hp:p id="{pid}" paraPrIDRef="20" styleIDRef="0" '
+        f'<hp:p id="{pid}" paraPrIDRef="0" styleIDRef="0" '
         f'pageBreak="0" columnBreak="0" merged="0">'
         f'<hp:run charPrIDRef="0">'
         f'<hp:t>{"_" * 60}</hp:t>'

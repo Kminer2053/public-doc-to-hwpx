@@ -310,3 +310,4 @@ globs: ["*.hwpx", "*.md", "*.docx"]
 | 2026-04-05 | 1.0.0 | 최초 생성 (python-hwpx 직접 API) |
 | 2026-04-05 | 2.0.0 | jkf87/hwpx-skill 구조 흡수, fix_namespaces 추가, 5개 워크플로우 분기 |
 | 2026-05-05 | **3.0.0** | **글쓰기 품질 강화** — 공공기관 보고서 작성 강의자료 + 공공기관 우수예시 학습. 4단계 워크플로우 (콘텐츠 정리 → 양식 결정 → 매핑 → 레이아웃 최적화) 도입. 4개 양식 빌더 (1p/full/gongmun/email) 분리. layout_optimizer.py 신규 (적/의/것/들, 한 문장 한 줄, 페이지 걸침 점검). compose_doc.py 통합 파이프라인. 사용자 참조 hwpx 우선 워크플로우. references/ 6개 가이드 추가. |
+| 2026-05-06 | **3.0.1** | **한글 호환성 핫픽스** — v3.0.0 빌드 산출물이 한글에서 "파일 손상" 메시지로 거부되던 문제 해결. 원인은 build_hwpx.py가 만들어낸 메타파일 6개(container.xml media-type, manifest/version/settings 네임스페이스, content.hpf href 경로, container.rdf·Preview/* 누락)가 한컴 표준에서 벗어난 것. python-hwpx 라이브러리의 검증된 Skeleton.hwpx를 베이스로 사용하도록 build_hwpx.py 전면 재작성. format_builders.py의 make_horizontal_rule paraPrIDRef="20" 오류 정정 (header 정의 범위 0~19). templates/_skeleton.hwpx 신규 동봉. |
