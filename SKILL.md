@@ -1,10 +1,10 @@
 ---
 name: public-doc-to-hwpx
-description: "AI가 생성한 콘텐츠를 공공기관 표준 보고서로 다듬어 HWPX 또는 메일 본문으로 변환하는 스킬. 보고서 작성 원칙(개조식 문체·한 문장 한 줄·적/의/것/들 정리·두괄식 요약)을 자동 적용하여 의사결정자가 30초 안에 읽고 5분 안에 판단할 수 있는 가독성 높은 문서를 만든다. 4개 양식(1페이지 보고서/풀버전 보고서/시행문/이메일)을 지원하고, 사용자가 참조 hwpx·hwtx 파일을 주면 그 서식을 자동 추출해 일치시킨다. 트리거: hwpx, HWP, 한글파일, 한글로 작성, 공문, 시행문, 보고서, 1페이지 보고서, 1p 보고, 기획서, 검토보고서, 추진계획, 결과보고, 검토결과, 공공기관 문서, 메일 작성, 이메일 본문, 회신 요청, 보고드림"
+description: "AI가 생성한 콘텐츠를 공공기관 표준 보고서로 다듬어 HWPX 또는 메일 본문으로 변환하는 스킬. 보고서 작성 원칙(개조식 문체·한 문장 한 줄·적/의/것/들 정리·두괄식 요약)을 자동 적용하여 의사결정자가 30초 안에 읽고 5분 안에 판단할 수 있는 가독성 높은 문서를 만든다. 4개 양식(1페이지 보고서/풀버전 보고서/시행문/이메일)을 지원하며, 1p·풀버전·시행문 세 양식은 내장 표준 hwpx 의 빈 골격(skeleton)에 콘텐츠만 채우는 방식으로 빌드되어 양식의 표·테두리·음영·페이지헤더 등 시각 디자인이 100% 보존된다. 사용자가 참조 hwpx 파일을 주면 그 양식을 우선 적용하며, 내용·구성까지 반영할지 추가로 묻는다. 트리거: hwpx, HWP, 한글파일, 한글로 작성, 공문, 시행문, 보고서, 1페이지 보고서, 1p 보고, 기획서, 검토보고서, 추진계획, 결과보고, 검토결과, 공공기관 문서, 메일 작성, 이메일 본문, 회신 요청, 보고드림"
 allowed-tools: "Bash(python3*), Read, Write, Glob"
 ---
 
-# 공공기관 보고서 작성 + HWPX 변환 스킬 (v3.0)
+# 공공기관 보고서 작성 + HWPX 변환 스킬 (v3.4.0)
 
 > **이 스킬의 목표**: AI가 없던 시절 한글(hwp)을 쓰던 베테랑 보고서 작성자가 만든 것처럼,
 > 독자 입장에서 가독성이 높고 핵심이 빠르게 읽히는 공공기관 보고서를 자동 생성한다.
@@ -16,21 +16,31 @@ allowed-tools: "Bash(python3*), Read, Write, Glob"
 ```
 public-doc-to-hwpx/
 ├── SKILL.md                          ← 이 파일 (4단계 워크플로우)
-├── scripts/
-│   ├── compose_doc.py                ★ 메인 파이프라인 (4단계 통합 실행)
-│   ├── layout_optimizer.py           ★ 레이아웃 최적화 (적/의/것/들, 한 문장 한 줄)
-│   ├── format_builders.py            ★ 4개 양식 빌더 (1p / full / gongmun / email)
-│   ├── content_mapper.py             콘텐츠 파싱 (md/docx/pdf/txt)
-│   ├── hwpx_helpers.py               저수준 XML 빌더
-│   ├── build_hwpx.py                 HWPX 조립
+├── scripts/                          ★ v3.4.0 — 빈 골격 채우기 단일 빌드 워크플로우
+│   ├── make_skeleton.py              양식 hwpx → 빈 골격 변환 (새 양식 등록 시)
+│   ├── fill_skeleton.py              ★ 메인 빌더 — 빈 골격 토큰을 값으로 치환
 │   ├── fix_namespaces.py             ⚠️ 필수 후처리 (빠뜨리면 한글에서 안 열림)
+│   ├── simulate_pages.py             ★ v3.3.0 — 페이지 시뮬레이션 + 목차 페이지번호 자동 매핑
+│   ├── ensure_body_anchor.py         ★ v3.3.0 — 본문 시작 pageBreak="1" 강제 (풀버전)
 │   └── validate.py                   구조 검증
 ├── templates/
+│   ├── _skeleton.hwpx                폴백 베이스
+│   ├── charpr_mapping.json           양식별 charPr 역할 → id 매핑표
 │   ├── government/header.xml         관공서 charPr/paraPr/borderFill 정의
-│   ├── format_1p/                    1p 보고서 참조 (사용자 hwpx 넣을 위치)
-│   ├── format_full/                  풀버전 보고서 참조
-│   ├── format_gongmun/                시행문 참조
-│   └── format_email/                  이메일 (참조 불필요)
+│   ├── format_1p/
+│   │   ├── standard.hwpx             1p 보고서 표준 양식 (맑은 고딕)
+│   │   ├── skeleton.hwpx             ★ 빈 골격 (35개 토큰)
+│   │   ├── skeleton_mapping.json     ★ 토큰 ↔ 원본 매핑표
+│   │   └── outline_guide.md          ★ v3.3.1 보고 목적별 11가지 표준 목차 가이드
+│   ├── format_full/
+│   │   ├── standard.hwpx             풀버전 보고서 표준 양식 (맑은 고딕, 표 10개)
+│   │   ├── skeleton.hwpx             ★ 빈 골격 (127개 토큰 — 페이지번호 포함)
+│   │   └── skeleton_mapping.json     ★ 토큰 ↔ 원본 매핑표
+│   ├── format_gongmun/
+│   │   ├── standard.hwpx             시행문 표준 양식 (굴림체, 표 셀 66개)
+│   │   ├── skeleton.hwpx             ★ 빈 골격 (27개 토큰 — fwSpace 포함)
+│   │   └── skeleton_mapping.json     ★ 토큰 ↔ 원본 매핑표
+│   └── format_email/                 이메일 (텍스트 출력이라 골격 불필요)
 └── references/
     ├── writing-principles.md         ★ 보고서 작성 원칙 (강의자료 + 사례 통합)
     ├── layout-rules.md               ★ 레이아웃 최적화 규칙
@@ -41,6 +51,8 @@ public-doc-to-hwpx/
     └── format-email.md               이메일 가이드
 ```
 
+> **v3.4.0 변경**: v3.3.x 까지의 "모드 1 (자동 빌드, `compose_doc.py`)" 는 양식 시각 디자인을 보존하지 못해 deprecated 되었고, v3.4.0 부터는 **빈 골격 채우기 단일 워크플로우** 만 지원합니다. 관련 스크립트(`compose_doc.py`, `layout_optimizer.py`, `format_builders.py`, `content_mapper.py`, `build_hwpx.py`, `hwpx_helpers.py`) 는 모두 제거되었습니다.
+
 ---
 
 ## ★ 4단계 워크플로우 (반드시 이 순서로 진행)
@@ -49,41 +61,61 @@ public-doc-to-hwpx/
 
 사용자 요청을 AI가 이해하기 쉬운 구조로 정돈한다.
 
-- 입력 파일(.md/.docx/.pdf/.txt)을 `content_mapper.parse_input()` 으로 파싱
-- 또는 사용자 메시지에서 핵심 정보(제목 후보·배경·현황·해결안·일정·예산 등)를 추출
+- Claude가 사용자 메시지 또는 입력 파일(.md/.docx/.pdf/.txt)에서 핵심 정보(제목 후보·배경·현황·해결안·일정·예산 등) 를 직접 추출
 - 마크다운 헤딩(`#`, `##`)을 섹션 구조로 변환
+- 필요 시 `kordoc` MCP 도구로 입력 파일 파싱 가능
 
 ### ② 작성목적 및 서식 결정
 
 **Claude는 반드시 이 순서로 양식을 결정한다.**
 
-#### 2-1. 사용자에게 참조 hwpx/hwtx 파일이 있는지 먼저 묻는다
+#### 2-1. 사용자에게 참조 HWPX 파일이 있는지 먼저 묻는다
 
 ```
 사용자에게 줄 메시지 (예시):
-"보고서 양식을 결정하기 전에, 회사·부서에서 평소에 쓰는
-참조용 .hwpx 또는 .hwtx 파일이 있으신가요?
+"보고서 양식을 결정하기 전에 한 가지 확인할게요.
+이번에 따로 참고하실 .hwpx 파일이 있으신가요?
 
-(있으면 그 서식을 그대로 적용하고, 없으면 공공기관 표준에
-가까운 무채색·중립 스타일로 작성하겠습니다.)"
+(없으셔도 됩니다. 1p 보고서·풀버전 보고서·시행문 모두 회사 표준
+서식이 내장되어 있어 폰트·서식이 그대로 적용됩니다.)"
 ```
 
-- **있다고 답하면** → 사용자가 업로드한 파일 경로를 받아 `--reference` 인자로 전달
-  - `kordoc:detect_format` 으로 포맷 검증
-  - 빈칸·플레이스홀더가 있으면 `kordoc:fill_form` 활용도 가능
-  - 없으면 `hwpx_helpers.extract_secpr_and_colpr` 로 서식 추출
-- **없다고 답하면** → 다음 단계로 (스킬 내장 기본 양식 사용)
+> ⚠️ HWTX 형식은 묻지 않는다. 내부적으로 어차피 HWPX 로 변환되므로,
+> 사용자가 HWTX 를 가지고 있더라도 HWPX 로 저장해서 줄 것을 안내한다.
+
+**참조 파일이 있다고 답하면** → 사용자 파일 경로 수령 후 **추가 질문** 한 번 더:
+
+```
+사용자에게 줄 추가 질문 (예시):
+"이 참조 파일을 어떻게 활용할까요?
+  ① 서식만 적용 (폰트·문단·테두리 등) - 기본 권장
+  ② 서식 + 내용·섹션 구성도 반영 (참조파일의 챕터/소제목 구조를 따라 콘텐츠를 재정렬)"
+```
+
+- **① 서식만** → 사용자 hwpx 를 `make_skeleton.py` 로 빈 골격(skeleton.hwpx) 으로 변환한 후, 그 골격에 콘텐츠를 매핑·빌드.
+  양식의 폰트·charPr·표·테두리·페이지헤더가 모두 보존됨.
+- **② 서식+내용** → 위와 동일하게 빈 골격을 만들되, 참조파일의 섹션 헤딩·소제목·문구 패턴을 학습하여
+  사용자 콘텐츠를 그 구조에 맞춰 재정렬한 후 매핑.
+  (예: 참조가 "추진배경 → 현황 → 개선안 → 일정" 구조라면 사용자 콘텐츠도 그 4단으로 매핑)
+
+**참조 파일이 없다고 답하면** → 별도 인자 없이 진행.
+양식이 결정되는 즉시 해당 `templates/<format>/standard.hwpx` 가
+자동으로 빌드 베이스가 된다.
+
+> 💡 **내장 표준 서식의 효과**: 한 번 양식이 결정되면 그 양식의 폰트(맑은 고딕/굴림체 등),
+> 글자속성 21~74개, 문단속성, 테두리채움 정의가 모두 보존된다. 즉 결과 hwpx 를
+> 한글에서 열면 사용자가 정리해 둔 회사 표준 서식이 그대로 보인다.
 
 #### 2-2. 4개 양식 중 자동 추천 + 최종 확인
 
-`compose_doc.pick_format()` 이 콘텐츠를 분석해 양식을 자동 추천한다.
+Claude 가 콘텐츠 분량·청자·목적을 분석해 양식을 자동 추천한다.
 
-| 양식 | 분량 | 독자 | 출력 |
-|------|------|------|------|
-| `format_1p` | A4 1쪽 강제 | 의사결정자 | .hwpx |
-| `format_full` | A4 5–30쪽 (표지+목차+요약+본문) | 상급자·관계부서 | .hwpx |
-| `format_gongmun` | A4 1–3쪽 (수신·제목·본문·발신) | 외부기관·일반국민 | .hwpx |
-| `format_email` | 200–500자 | 협업자 | **.md/.txt 텍스트** (메일 복붙용) |
+| 양식 | 분량 | 독자 | 출력 | 베이스 (내장) |
+|------|------|------|------|--------------|
+| `format_1p` | A4 1쪽 강제 | 의사결정자 | .hwpx | 맑은 고딕, charPr 21개 |
+| `format_full` | A4 5–30쪽 (표지+목차+요약+본문) | 상급자·관계부서 | .hwpx | 맑은 고딕, charPr 74개 |
+| `format_gongmun` | A4 1–3쪽 (수신·제목·본문·발신) | 외부기관·일반국민 | .hwpx | 굴림체, charPr 28개 |
+| `format_email` | 200–500자 | 협업자 | **.md/.txt 텍스트** | (텍스트 출력이라 베이스 불필요) |
 
 자세한 결정 트리는 `references/format-selection.md` 참조.
 
@@ -96,18 +128,21 @@ public-doc-to-hwpx/
 
 ### ③ 지정 용도의 서식에 맞춰 콘텐츠 텍스트 수정
 
-`compose_doc.map_to_format()` 가 양식별 필수 항목에 자동 매핑한다.
+Claude 가 양식의 `skeleton_mapping.json` 을 참조하여 사용자 콘텐츠를 양식 슬롯에 매핑한다.
 
-- 1p 보고서 → 부제·제목·작성자·요약문·□섹션 으로 매핑
-- 풀버전 → 표지·목차·요약페이지·본문 chapters 로 매핑
-- 시행문 → 수신·제목·본문(서술식+개조식)·붙임·발신명의·메타데이터로 매핑
-- 이메일 → 제목·받는사람·결론·□섹션·서명 으로 매핑
+- 1p 보고서 → 부제·제목·작성자·요약문·□ 섹션(4개) 슬롯에 매핑
+- 풀버전 → 표지·목차·요약페이지·본문 chapters(127 슬롯) 에 매핑
+- 시행문 → 수신·제목·본문(서술식+개조식)·붙임·발신명의 슬롯(27개) 에 매핑
+  - **본문-메타 분리 원칙**: 수신자·발신자·결재선·시행번호·날짜·전화 같은 메타 정보는 빈 값으로 두고 한글에서 직접 채울 자리로 남김
+- 이메일 → 제목·받는사람·결론·□ 섹션·서명 (텍스트 출력)
 
-**필수항목 누락 시** `_missing` 리스트에 담아 `※ AI 보완 필요` 플래그를 붙인다.
+**필수항목 누락 시** Claude 가 사용자에게 알리고 추가 정보를 요청한다.
+
+**마커 일관성 원칙**: 양식 원본 텍스트(`skeleton_mapping.json` 의 `original_text`) 의 마커 패턴(◦, -, * 등) 을 그대로 따라 값을 채운다. 원본에 ◦ 가 있으면 우리 값에도 ◦ 를 직접 적고, 원본에 마커가 없으면 (paraPr 자동 들여쓰기) 마커 없이 텍스트만 넣는다.
 
 ### ④ 레이아웃 최적화 편집 (★ 가장 차별화된 부분)
 
-`layout_optimizer.optimize()` 가 다음을 자동 적용한다.
+Claude 가 슬롯에 값을 매핑하기 *전*에 다음을 직접 적용한다 (참고: `references/layout-rules.md`).
 
 #### 4-1. 자동 적용 (신뢰도 높음)
 - `~와 관련된` → `~ 관련`
@@ -135,38 +170,67 @@ public-doc-to-hwpx/
 
 ---
 
-## 가장 빠른 실행 (one-shot)
+## 표준 빌드 워크플로우 (v3.4.0)
+
+v3.4.0 부터는 **빈 골격 채우기 단일 워크플로우** 만 지원한다. v3.3.x 까지 존재하던 자동 빌드 모드(`compose_doc.py`) 는 양식 시각 디자인을 보존하지 못해 deprecated 되었다.
+
+### 작동 원리
+양식 hwpx 를 사전에 빈 골격(`skeleton.hwpx`) 으로 변환해 두고, 빌드 시 토큰 자리에 콘텐츠를 채워 넣는다.
+
+- ✅ **양식의 표·테두리·음영·페이지헤더 등 모든 시각 구조 100% 보존**
+- ✅ 한글에서 열었을 때 양식 파일과 시각적으로 거의 동일한 결과
+- ✅ 콘텐츠와 양식 디자인이 완전히 분리되어 양식만 교체하는 작업도 단순
+
+### 표준 명령 시퀀스
 
 ```bash
 cd <skill_dir>
 
-# (참조 파일 있을 때)
-python3 scripts/compose_doc.py input.md output.hwpx \
-  --format format_1p \
-  --reference user_reference.hwpx \
-  --meta meta.json \
-  --report-path /tmp/optimization_report.md
+# 단계 ① 매핑 JSON 확인 → 슬롯이 몇 개 있고 어떤 의미인지 파악
+cat templates/format_full/skeleton_mapping.json
 
-# (참조 파일 없을 때 - 무채색 중립 스타일 폴백)
-python3 scripts/compose_doc.py input.md output.hwpx \
-  --format format_1p \
-  --meta meta.json \
-  --report-path /tmp/optimization_report.md
+# 단계 ② 콘텐츠를 양식 슬롯에 맞게 매핑한 values.json 작성
+# (각 토큰에 실제 들어갈 텍스트를 값으로 지정)
+
+# 단계 ③ 빈 골격에 값 채우기
+python3 scripts/fill_skeleton.py \
+  --skeleton templates/format_full/skeleton.hwpx \
+  --values my_values.json \
+  --output result.hwpx
+
+# 단계 ④ 후처리 + 검증
+python3 scripts/fix_namespaces.py result.hwpx
+python3 scripts/validate.py result.hwpx
+
+# 단계 ⑤ (풀버전만) 페이지 시뮬레이션 + 본문 anchor 보장 — v3.3.0
+python3 scripts/simulate_pages.py result.hwpx
+python3 scripts/ensure_body_anchor.py result.hwpx
 ```
 
-`meta.json` 예시 (1p 보고서):
+### values.json 예시 (풀버전 보고서)
+
 ```json
 {
-  "subtitle": "- ○○공사와 중소기업 상생협력을 위한 -",
-  "author": "○○○처장 ○○○",
-  "date": "'25.11.",
-  "phone": "4315"
+  "표지_제목": "전사적 AI역량 강화 추진계획",
+  "표지_부제": "- AX 시대 인적자원 혁신을 위한 -",
+  "보고일": "2026. 5. 11.",
+  "기관명": "○○공사",
+  "본부부서명": "AI혁신처",
+  "장01_제목": " 추진배경 및 필요성",
+  "본문_절_001": " □ AX 시대 도래로 전사적 AI 리터러시 확보 필수",
+  "본문_항목_001": " 글로벌 기업 89% 이상이 AI 도입을 이미 진행 중",
+  "본문_세부_001": "   - 4조 4천억 달러 규모 생산성 향상 잠재력 보유",
+  "본문_주석_001": "       ※ 단, 성숙 단계 기업은 1~6%에 불과"
 }
 ```
 
-이 명령 한 줄이 4단계를 모두 실행한다. 결과:
-- `output.hwpx` — 한글에서 바로 열리는 문서
-- `/tmp/optimization_report.md` — 자동 적용·검토 권장 사항 리포트
+### 새 양식을 빈 골격으로 만들 때
+
+```bash
+# 사용자가 templates/format_<name>/standard.hwpx 를 두면
+python3 scripts/make_skeleton.py templates/format_<name>/standard.hwpx
+# → templates/format_<name>/skeleton.hwpx + skeleton_mapping.json 자동 생성
+```
 
 ---
 
@@ -178,7 +242,12 @@ python3 scripts/compose_doc.py input.md output.hwpx \
 - 구성: 부제 → 제목 → 음영 박스(요약) → □ 대제목(3–4개) → ○ 본문 → - 세부
 - 분량: 1쪽 강제 (38줄 이내)
 - 우수예시: `○○기관 협력사업 실무협의 보고`, `신규 사업 제휴 검토결과 보고`
-- 가이드: `references/format-1p.md`
+- 가이드: `references/format-1p.md` (양식 일반 가이드)
+- **목차 구성 가이드**: `templates/format_1p/outline_guide.md` (v3.3.1 신규)
+  - 보고 목적별 11가지 유형의 표준 목차 (현황·동향 / 검토·의사결정 / 계획 / 문제해결 / 이슈·리스크 / 결과·성과 / 회의 안건 / 회의 결과 / 행사 / 제휴·협력 / 예산·구매)
+  - 4절 기본형 / 5절 확장형 / 3절 압축형 골격
+  - 양식의 4섹션 슬롯(text_004~023) 과 목차 절의 대응표
+  - 1페이지 보고서 빌드 시 **목차를 먼저 이 가이드에서 선택한 후** 슬롯에 매핑하는 것이 표준 워크플로우
 
 ### format_full (풀버전 보고서)
 - 구성: 표지 → 목차 → 보고내용 요약(1쪽) → 본문(Ⅰ.1.가.(1)(가)) → 별첨
@@ -223,34 +292,41 @@ python3 scripts/compose_doc.py input.md output.hwpx \
 | 3 | `mimetype` = `ZIP_STORED` | 손상된 파일 |
 | 4 | XML 이스케이프 (`< > & "`) | XML 파싱 오류 |
 | 5 | ID 고유성 (모든 문단 id 정수) | 렌더링 오류 |
-| 6 | 템플릿 ID 비혼용 (government charPr를 다른 템플릿에 사용 금지) | 서식 깨짐 |
+| 6 | 템플릿 ID 비혼용 (서로 다른 양식의 charPr id 를 혼용 금지) | 서식 깨짐 |
 | 7 | 1p 양식 분량 초과 시 빌드 거부 | 페이지 걸침 |
-| 8 | 사용자에게 참조 파일 여부 먼저 질문 | 양식 미스매치 |
+| 8 | 사용자에게 참조 파일 여부 먼저 질문 (HWPX 만; HWTX 는 묻지 말 것) | 양식 미스매치 |
+| 9 | 참조 파일 있을 때 "서식만 vs 서식+내용 반영" 추가 질문 | 사용자 의도 미반영 |
+| 10 | charPr id 는 매핑표(`templates/charpr_mapping.json`)를 통해 조회 | 폰트/스타일 불일치 |
+| 11 | 양식 시각 디자인(표·테두리·음영) 일치가 중요하면 빈 골격 모드 사용 (자동 빌드 모드는 단락만 생성하여 표 등이 사라짐) | 양식과 시각적으로 큰 차이 |
 
-위 1–6은 기존 v2 의 규칙 그대로, 7–8은 v3 추가 규칙.
+위 1–6은 v2~v3.0.1 의 규칙 그대로, 7–8은 v3.0 추가, 9–10은 v3.1 추가, 11은 v3.2 신규 규칙.
 
 ---
 
 ## 참조 파일이 있을 때 워크플로우 (kordoc 활용)
 
-사용자가 hwpx/hwtx 참조 파일을 주면:
+사용자가 hwpx 참조 파일을 주면 (v3.4.0 기준 — 빈 골격 채우기 단일 방식):
 
 ```python
-# 1단계: 포맷 검증 (kordoc MCP 도구 사용)
+# 1단계: 포맷 검증 (kordoc MCP 도구 사용 — 사용 가능한 경우)
 # kordoc:detect_format → 'hwpx' 확인
 
 # 2단계: 빈칸·플레이스홀더 점검
 # kordoc:parse_document 로 마크다운 변환 후 {{제목}} 같은 패턴 탐지
 
-# 3-A: 빈칸이 있으면 (양식형) → 워크플로우 B (템플릿 치환)
+# 3-A: 빈칸이 있으면 (양식형) → 템플릿 치환 워크플로우
 zip_replace('reference.hwpx', 'output.hwpx', {
     '{{제목}}': '...', '{{날짜}}': '...', '{{부서}}': '...'
 })
 subprocess.run(['python3', 'scripts/fix_namespaces.py', 'output.hwpx'])
 
-# 3-B: 빈칸이 없으면 (서식 추출형) → secPr/colPr 추출 후 격납
-secpr, colpr = extract_secpr_and_colpr('reference.hwpx')
-# compose_doc.compose() 의 reference_hwpx 인자로 그대로 넘기면 됨
+# 3-B: 빈칸이 없으면 (서식 추출형) → 빈 골격으로 변환 후 콘텐츠 채우기
+subprocess.run([
+    'python3', 'scripts/make_skeleton.py',
+    'reference.hwpx',                          # 사용자 양식
+    '--output-dir', 'templates/format_user/',  # 빈 골격 + 매핑표 생성
+])
+# 그 다음 표준 빌드 워크플로우 적용 (fill_skeleton → fix_namespaces → validate)
 ```
 
 ---
@@ -265,6 +341,8 @@ secpr, colpr = extract_secpr_and_colpr('reference.hwpx')
 | 서식이 깨짐 | 템플릿 ID 혼용 | 한 문서 = 한 템플릿만 |
 | 한글 깨짐 | XML 이스케이프 누락 | `xml_escape()` 호출 확인 |
 | 글꼴이 다름 | 환경에 함초롬 없음 | 한글 환경에서 열거나 맑은 고딕으로 폴백 |
+| 폰트가 양식과 다름 | `standard.hwpx` 또는 `skeleton.hwpx` 누락 | `templates/<format>/skeleton.hwpx` 존재 확인, 없으면 `make_skeleton.py` 로 생성 |
+| 제목·강조가 본문과 같은 크기 (v3.1+) | charpr_mapping.json 누락 또는 양식 미등록 | `templates/charpr_mapping.json` 존재 확인, 해당 format_type 키 등록 여부 확인 |
 
 ---
 
@@ -276,29 +354,32 @@ secpr, colpr = extract_secpr_and_colpr('reference.hwpx')
 # Claude 가 사용자와 대화 중일 때:
 # 1. 콘텐츠 정리 (대화 기반 또는 파일 입력)
 # 2. 사용자에게 참조 hwpx 여부 질문
-# 3. 양식 추천 + 확인
-# 4. compose_doc.py 한 번 실행
-# 5. 결과 .hwpx 와 optimization 리포트를 사용자에게 제시
+# 3. 양식 추천 + 확인 (1p/full/gongmun/email)
+# 4. skeleton_mapping.json 참조하여 values.json 작성
+# 5. fill_skeleton.py → fix_namespaces.py → validate.py 실행
+# 6. (풀버전만) simulate_pages.py → ensure_body_anchor.py 적용
+# 7. 결과 .hwpx 를 사용자에게 제시
 ```
 
 ### Cursor / Codex (.cursor/rules)
 ```
-description: "HWPX 작성 시 public-doc-to-hwpx v3 사용"
+description: "HWPX 작성 시 public-doc-to-hwpx v3.4 사용"
 globs: ["*.hwpx", "*.md", "*.docx"]
 ---
 1. SKILL.md 의 4단계 워크플로우를 따른다
-2. compose_doc.py 한 번으로 끝나면 그것만 사용
-3. ALWAYS run fix_namespaces.py after build (compose_doc 가 이미 호출함)
-4. layout_optimizer 의 검토 권장 사항을 사용자에게 항상 표시
+2. 표준 빌드 워크플로우는 fill_skeleton → fix_namespaces → validate
+3. ALWAYS run fix_namespaces.py after fill_skeleton.py
+4. 1p 보고서는 outline_guide.md 의 11가지 유형 중 매칭되는 목차 선정
 5. 1p 양식 1쪽 초과 시 풀버전 변경 권고 (자동 변경 금지)
 ```
 
 ### n8n / Cowork
 ```
 트리거: 파일 업로드 또는 텍스트 입력
-노드1: Python 실행 → compose_doc.py
-노드2: 결과 .hwpx + 리포트 .md 다운로드
-노드3: 슬랙/메일 발송
+노드1: Python 실행 → fill_skeleton.py
+노드2: Python 실행 → fix_namespaces.py + validate.py
+노드3: 결과 .hwpx 다운로드
+노드4: 슬랙/메일 발송
 ```
 
 ---
@@ -309,5 +390,12 @@ globs: ["*.hwpx", "*.md", "*.docx"]
 |------|------|----------|
 | 2026-04-05 | 1.0.0 | 최초 생성 (python-hwpx 직접 API) |
 | 2026-04-05 | 2.0.0 | jkf87/hwpx-skill 구조 흡수, fix_namespaces 추가, 5개 워크플로우 분기 |
-| 2026-05-05 | **3.0.0** | **글쓰기 품질 강화** — 공공기관 보고서 작성 강의자료 + 공공기관 우수예시 학습. 4단계 워크플로우 (콘텐츠 정리 → 양식 결정 → 매핑 → 레이아웃 최적화) 도입. 4개 양식 빌더 (1p/full/gongmun/email) 분리. layout_optimizer.py 신규 (적/의/것/들, 한 문장 한 줄, 페이지 걸침 점검). compose_doc.py 통합 파이프라인. 사용자 참조 hwpx 우선 워크플로우. references/ 6개 가이드 추가. |
-| 2026-05-06 | **3.0.1** | **한글 호환성 핫픽스** — v3.0.0 빌드 산출물이 한글에서 "파일 손상" 메시지로 거부되던 문제 해결. 원인은 build_hwpx.py가 만들어낸 메타파일 6개(container.xml media-type, manifest/version/settings 네임스페이스, content.hpf href 경로, container.rdf·Preview/* 누락)가 한컴 표준에서 벗어난 것. python-hwpx 라이브러리의 검증된 Skeleton.hwpx를 베이스로 사용하도록 build_hwpx.py 전면 재작성. format_builders.py의 make_horizontal_rule paraPrIDRef="20" 오류 정정 (header 정의 범위 0~19). templates/_skeleton.hwpx 신규 동봉. |
+| 2026-05-05 | 3.0.0 | **글쓰기 품질 강화** — 공공기관 보고서 작성 강의자료 + 공공기관 우수예시 학습. 4단계 워크플로우 (콘텐츠 정리 → 양식 결정 → 매핑 → 레이아웃 최적화) 도입. 4개 양식 빌더 (1p/full/gongmun/email) 분리. layout_optimizer.py 신규 (적/의/것/들, 한 문장 한 줄, 페이지 걸침 점검). compose_doc.py 통합 파이프라인. 사용자 참조 hwpx 우선 워크플로우. references/ 6개 가이드 추가. |
+| 2026-05-06 | 3.0.1 | **한글 호환성 핫픽스** — v3.0.0 빌드 산출물이 한글에서 "파일 손상" 메시지로 거부되던 문제 해결. python-hwpx 라이브러리의 검증된 Skeleton.hwpx 를 베이스로 사용하도록 build_hwpx.py 전면 재작성. format_builders.py 의 make_horizontal_rule paraPrIDRef 오류 정정. templates/_skeleton.hwpx 신규 동봉. |
+| 2026-05-11 | 3.1.0 | **양식별 표준 hwpx 내장 + 폰트·charPr 100% 보존** — 1p / 풀버전 / 시행문 세 양식의 회사 표준 hwpx 를 `templates/format_*/standard.hwpx` 로 내장. `build_hwpx.py` 에 `--base-hwpx` 모드 추가 (베이스 hwpx 통째로 사용, header.xml 보존). `templates/charpr_mapping.json` 신규 — 양식별 charPr 역할 → id 매핑표 도입. `format_builders.py` 의 모든 빌더가 양식별 cp_map 을 받아 글자 스타일을 동적으로 선택. 결과: 사용자가 별도 참조 파일을 주지 않아도 양식의 폰트(맑은 고딕/굴림체)·글자속성 21~74개·문단속성·테두리채움이 결과 hwpx 에 그대로 적용. 워크플로우 2-1 갱신: HWTX 는 묻지 않고 HWPX 만 묻기, 참조파일 있을 때 "서식만 vs 서식+내용 반영" 추가 질문. 풀버전 양식의 이미지(image1.jpg, image2.WMF) 사전 제거. |
+| 2026-05-11 | 3.2.0 | **빈 골격 채우기 모드 도입 — 양식의 시각 디자인 100% 보존** — v3.1 의 base_hwpx 모드는 header.xml(폰트·charPr 정의) 만 보존하고 section0.xml 은 단락 기반으로 새로 만들었기 때문에 양식의 **표·테두리·음영·페이지헤더 등 시각 디자인이 사라지는** 본질적 한계가 있었다(풀버전 양식의 표 10개와 테두리채움 91건 → 빌드 결과 0개와 3건으로 손실). v3.2 는 양식 hwpx 의 section0.xml 도 통째로 보존하면서 텍스트만 `{{토큰}}` placeholder 로 교체한 빈 골격(skeleton.hwpx) 을 사전 생성하고, 빌드 시 토큰만 채우는 워크플로우를 추가했다. 신규 스크립트: `make_skeleton.py` (양식 → 빈 골격 자동 변환, 라벨/마커/위계는 보존), `fill_skeleton.py` (placeholder → 값 치환). 3개 양식 모두 빈 골격 사전 생성 (1p 35슬롯, 시행문 23슬롯, 풀버전 75슬롯). 결과: 양식의 표 10·테두리채움 91·charPr 58종·paraPr 27종이 빌드 결과에 100% 그대로 보존됨. SKILL.md 에 두 가지 빌드 모드(자동 / 골격 채우기) 가이드 추가. |
+| 2026-05-11 | 3.2.1 | **핫픽스: 자식 태그 포함 hp:t 처리 누락 해결 (목차 보존 문제)** — v3.2.0 의 make_skeleton.py 가 `<hp:t>` 안에 자식 태그(`<hp:tab/>`, `<hp:fwSpace/>` 등) 가 끼어있는 경우를 매칭하지 못해, 양식의 **목차 페이지·풀폭 공백 영역 텍스트가 토큰화되지 않고 양식 원본 그대로 결과에 남는 문제** 발생. 사용자가 풀버전 결과에서 양식의 목차("Ⅰ. 사업 개요 ··· 1") 가 자기 보고서 목차로 안 바뀌고 그대로 남아 있어서 발견. 원인은 `<hp:t>([^<]*)</hp:t>` 정규식이 자식 태그를 만나면 매칭 종료되는 데 있었음. 해결: 비탐욕·DOTALL 정규식으로 자식 태그 포함 hp:t 도 매칭하고, 자식 태그(점선 채움 `<hp:tab leader="3"/>` 등) 는 보존하면서 텍스트 노드만 분리해 `목차_항목_NNN` 같은 새 토큰 카테고리로 토큰화. 페이지 나눔 감지도 `pageBreak="1"` 뿐 아니라 `<hp:ctrl type="PAGE_BREAK"` 도 잡도록 보완. 결과 슬롯 수: 1p 35→35, 시행문 23→27 (`<hp:fwSpace/>` 처리), 풀버전 75→112 (목차 37 슬롯 추가). 풀버전의 점선 채움 효과(`hp:tab leader="3"`) 26개 모두 보존. |
+| 2026-05-11 | 3.2.2 | **목차 페이지번호 일관 처리** — v3.2.1 까지는 `should_preserve()` 가 "1글자 이하 텍스트는 보존(라벨/마커로 판단)" 규칙을 가져서 1자리 페이지번호 ("1", "3", "5" 등) 가 토큰화되지 않고 양식 원본 값 그대로 남는 문제 발생. 결과적으로 같은 목차 안에서 1자리 페이지번호는 양식 그대로, 2자리 페이지번호("10", "11" 등) 는 사용자 매핑값으로 적용되어 페이지번호가 보고서 실제 구조와 불일치. 해결: `should_preserve()` 에 "1글자라도 숫자(0-9) 면 토큰화 대상" 룰을 추가. 결과: 풀버전 양식의 목차 페이지번호 26개 전체가 일관되게 토큰화되어 우리 보고서 페이지 구조에 맞게 자유롭게 설정 가능 (목차_항목 짝수번 슬롯 = 페이지번호). 풀버전 슬롯 수: 112 → 127. AI 보고서 빌드 결과 목차가 "Ⅰ. 추진배경 ··· 1 / Ⅱ. 추진목표 ··· 2 / ..." 식으로 자연스러운 페이지번호 흐름으로 출력됨. |
+| 2026-05-12 | 3.3.0 | **페이지 시뮬레이터 + 목차 페이지번호 자동 산출** — 한글의 실제 페이지 분량을 파이썬 단독 시뮬레이션으로 산출하여 목차 페이지번호를 자동 매핑하는 워크플로우 도입. 본질적으로 한국어 워드 프로세서의 페이지 레이아웃 엔진을 100% 재현하는 것은 어렵지만, 공공기관 보고서의 구조적 균일성을 활용하면 단순 카운트로도 정확도 100% 달성 가능함이 검증됨. 알고리즘 v4 (Simple Default): (1) 표지=1쪽 고정, (2) 목차=`ceil(항목수/30)` 쪽 — 양식 원본 30줄/쪽 실측 기반, (3) 본문=절(□) 단위 누적, 페이지당 3절. AI 보고서 검증 결과: Ⅰ장=3쪽, Ⅲ장=4쪽, Ⅴ장=5쪽, Ⅵ장=6쪽 모두 한글 환경과 100% 일치, 총 6쪽 일치. 신규 스크립트: `simulate_pages.py` (페이지 시뮬레이션 + 목차 페이지번호 자동 매핑), `ensure_body_anchor.py` (본문 시작 단락 pageBreak="1" 강제 보장). chapter-aware 매핑: 사용자 콘텐츠의 텍스트 슬롯에서 장 번호(Ⅰ~Ⅹ)를 감지하여 같은 장에 속한 모든 페이지번호 슬롯에 그 장의 페이지를 일관되게 할당. LibreOffice+H2Orestart PDF 변환은 폰트 대체로 페이지 분량이 달라지므로 의도적으로 채택하지 않음(파이썬 단독 시뮬레이션이 한글 환경 결과와 더 일치). |
+| 2026-05-12 | 3.3.1 | **1페이지 보고서 목차 구성 가이드라인 통합** — `templates/format_1p/outline_guide.md` 신규 추가. 공공기관 1페이지 보고서의 **보고 목적별 11가지 표준 목차** (현황·동향 / 검토·의사결정 / 사업·정책 계획 / 문제해결·개선방안 / 이슈·리스크·사고 / 결과·성과 / 회의 안건 / 회의 결과 / 행사 계획 / 제휴·협력 검토 / 예산·구매·품의) 와 3가지 공통 골격(4절 기본형·5절 확장형·3절 압축형) 을 정식 등재. 양식의 4섹션 슬롯(`text_004`~`text_023`) 과 목차 절의 대응표 포함. 1p 보고서 빌드의 표준 워크플로우 확정: **(1) 보고 목적 결정 → (2) 11개 유형 중 매칭되는 표준 목차 선정 → (3) 양식 슬롯에 매핑 → (4) `fill_skeleton.py` 빌드.** 또한 매핑 작성 시 본문-메타 분리 원칙도 함께 명시 — 시행문의 수신자·발신자·결재선·시행번호·날짜·전화 같은 메타 정보는 Claude 가 가짜값(예: `02-XXX-XXXX`, `AI혁신처-368`) 으로 채우지 말고 **빈 값** 으로 두어 한글 사용자가 직접 채울 자리로 남겨두는 것이 표준. |
+| 2026-05-12 | **3.4.0** | **이전 자동 빌드 모드(compose_doc.py) 완전 제거 — 빈 골격 채우기 단일 워크플로우로 단일화** — v3.2 부터 빈 골격 채우기(모드 2) 가 시각 디자인 100% 보존이라는 본질적 강점으로 표준이 됐지만, SKILL.md 에는 v3.3.x 까지 자동 빌드(모드 1, `compose_doc.py`) 가 "빠른 초안용"으로 함께 안내되어 있어 사용자 혼란 야기. 자동 빌드 모드는 단락 기반 빌더라 양식의 표·테두리·음영·페이지헤더 등 시각 구조를 유지하지 못하므로 v3.4.0 부터 deprecated 처리. **제거된 스크립트 6개 (총 116KB)**: `compose_doc.py` (메인 파이프라인), `layout_optimizer.py` (적/의/것/들·페이지 걸침 점검), `format_builders.py` (4개 양식 단락 빌더), `content_mapper.py` (입력 파싱), `build_hwpx.py` (HWPX 조립), `hwpx_helpers.py` (저수준 XML). 모드 2 표준 스크립트 6개는 그대로 유지: `make_skeleton.py`, `fill_skeleton.py`, `fix_namespaces.py`, `validate.py`, `simulate_pages.py`, `ensure_body_anchor.py`. SKILL.md 의 모든 `compose_doc`/`layout_optimizer` 참조 정리 및 워크플로우 ①~④, "두 가지 빌드 모드" 섹션, 참조파일 처리, 트러블슈팅, Claude/Cursor/n8n 호출 패턴 전면 재작성. 레이아웃 최적화(④ 단계) 는 더 이상 별도 스크립트가 아니라 Claude 가 매핑 *전*에 직접 적용하는 작성 원칙으로 변경 (`references/layout-rules.md` 참조). 표준 빌드 워크플로우: `fill_skeleton.py` → `fix_namespaces.py` → `validate.py` (+ 풀버전: `simulate_pages.py` → `ensure_body_anchor.py`). 패키지 크기 약 116KB 감소. |

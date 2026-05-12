@@ -1,0 +1,57 @@
+{
+  "_comment": "양식별 charPr 역할(role) → charPr id 매핑표. format_builders.py 가 양식별 standard.hwpx 의 header.xml 정의에 맞춰 동적으로 글자 스타일을 선택할 때 사용한다. 신규 양식을 추가하거나 매핑을 수정할 때는 analyze_charpr.py 의 분석 결과를 참고할 것.",
+  "format_1p": {
+    "_meta": {
+      "source": "templates/format_1p/standard.hwpx",
+      "main_font": "맑은 고딕"
+    },
+    "BODY": 0,
+    "BODY_LG": 8,
+    "SMALL": 2,
+    "TITLE_M": 7,
+    "TITLE_L": 16,
+    "BANNER": 18,
+    "EMPHASIS": 5
+  },
+  "format_gongmun": {
+    "_meta": {
+      "source": "templates/format_gongmun/standard.hwpx",
+      "main_font": "굴림체"
+    },
+    "BODY": 0,
+    "BODY_BOLD": 10,
+    "SMALL": 3,
+    "TITLE_M": 11,
+    "TITLE_L": 12,
+    "TITLE_XL": 8,
+    "EMPHASIS": 16
+  },
+  "format_full": {
+    "_meta": {
+      "source": "templates/format_full/standard.hwpx",
+      "main_font": "맑은 고딕"
+    },
+    "BODY": 0,
+    "BODY_BOLD": 26,
+    "SMALL": 6,
+    "HEADING": 17,
+    "TITLE_M": 28,
+    "TITLE_L": 23,
+    "TITLE_XL": 24,
+    "COVER": 44,
+    "BANNER": 29,
+    "EMPHASIS": 9
+  },
+  "_fallback_government": {
+    "_comment": "기존 government/header.xml 베이스 사용 시의 매핑 (참조파일도 standard.hwpx도 없을 때의 최후 폴백)",
+    "BODY": 0,
+    "BODY_BOLD": 1,
+    "SMALL": 3,
+    "TITLE_M": 2,
+    "TITLE_L": 2,
+    "TITLE_XL": 9,
+    "COVER": 9,
+    "BANNER": 9,
+    "EMPHASIS": 5
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "_comment": "빈 골격 hwpx 의 placeholder 토큰 ↔ 원본 텍스트 매핑. fill_skeleton.py 로 채울 때 token 키에 값을 넣은 JSON 을 전달하면 됨.",
+  "source_hwpx": "standard.hwpx",
+  "skeleton_hwpx": "skeleton.hwpx",
+  "total_slots": 35,
+  "slots": [
+    {
+      "token": "text_001",
+      "original_text": "OOO 신사업 보고서",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_002",
+      "original_text": "폰트 HY헤드라인M, 크기 18",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_003",
+      "original_text": "&lt;소속부서 : OOOO부서, 2022.12.31.&gt;",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_004",
+      "original_text": "□ HY헤드라인M 15pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_005",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_006",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_007",
+      "original_text": "휴먼명조 12pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_008",
+      "original_text": " * 맑은 고딕 11pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_009",
+      "original_text": "□ HY헤드라인M 15pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_010",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_011",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_012",
+      "original_text": "휴먼명조 12pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_013",
+      "original_text": " * 맑은 고딕 11pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_014",
+      "original_text": "□ HY헤드라인M 15pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_015",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_016",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_017",
+      "original_text": "휴먼명조 12pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_018",
+      "original_text": " * 맑은 고딕 11pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_019",
+      "original_text": "□ HY헤드라인M 15pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_020",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_021",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_022",
+      "original_text": "휴먼명조 12pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_023",
+      "original_text": " * 맑은 고딕 11pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "장01_제목",
+      "original_text": "붙임",
+      "page": 2,
+      "in_table": true
+    },
+    {
+      "token": "장02_제목",
+      "original_text": "HY헤드라인 15pt",
+      "page": 2,
+      "in_table": true
+    },
+    {
+      "token": "본문_절_001",
+      "original_text": "□ HY헤드라인M 15pt",
+      "page": 2,
+      "in_table": false
+    },
+    {
+      "token": "text_024",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 2,
+      "in_table": false
+    },
+    {
+      "token": "text_025",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 2,
+      "in_table": false
+    },
+    {
+      "token": "text_026",
+      "original_text": "휴먼명조 12pt",
+      "page": 2,
+      "in_table": false
+    },
+    {
+      "token": "본문_주석_001",
+      "original_text": " * 맑은 고딕 11pt",
+      "page": 2,
+      "in_table": false
+    },
+    {
+      "token": "본문_절_002",
+      "original_text": "□ HY헤드라인M 15pt",
+      "page": 2,
+      "in_table": false
+    },
+    {
+      "token": "text_027",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 2,
+      "in_table": false
+    },
+    {
+      "token": "text_028",
+      "original_text": "◦ 휴먼명조 13pt",
+      "page": 2,
+      "in_table": false
+    },
+    {
+      "token": "text_029",
+      "original_text": "휴먼명조 12pt",
+      "page": 2,
+      "in_table": false
+    },
+    {
+      "token": "본문_주석_002",
+      "original_text": " * 맑은 고딕 11pt",
+      "page": 2,
+      "in_table": false
+    }
+  ]
+}

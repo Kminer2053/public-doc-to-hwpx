@@ -1,0 +1,170 @@
+{
+  "_comment": "빈 골격 hwpx 의 placeholder 토큰 ↔ 원본 텍스트 매핑. fill_skeleton.py 로 채울 때 token 키에 값을 넣은 JSON 을 전달하면 됨.",
+  "source_hwpx": "standard.hwpx",
+  "skeleton_hwpx": "skeleton.hwpx",
+  "total_slots": 27,
+  "slots": [
+    {
+      "token": "text_001",
+      "original_text": "기관 슬로건",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_002",
+      "original_text": "기관로고",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_003",
+      "original_text": "기관명",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_004",
+      "original_text": "수신자 ",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_005",
+      "original_text": "(경유)",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_006",
+      "original_text": "맑은고딕 14pt",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_007",
+      "original_text": "1. 맑은 고딕 14pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_008",
+      "original_text": "2. ",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_009",
+      "original_text": "맑은 고딕 14pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "목차_항목_001",
+      "original_text": "가. 맑은 고딕 12pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "목차_항목_002",
+      "original_text": "나. 맑은 고딕 12pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_010",
+      "original_text": "    1) 맑은 고딕 11pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_011",
+      "original_text": "      가) 맑은 고딕 11pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_012",
+      "original_text": "        (1) 맑은 고딕 10pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_013",
+      "original_text": "          ① 맑은 고딕 10pt",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "목차_항목_003",
+      "original_text": "붙임: 1. 참고자료명 맑은 고딕 12pt 1부",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "목차_항목_004",
+      "original_text": "2. 참고자료명 1부. 끝.",
+      "page": 1,
+      "in_table": false
+    },
+    {
+      "token": "text_014",
+      "original_text": "기관명",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_015",
+      "original_text": "수신자",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_016",
+      "original_text": "주임",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_017",
+      "original_text": "대리",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_018",
+      "original_text": "과장",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_019",
+      "original_text": "팀장",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_020",
+      "original_text": "부서명-368",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_021",
+      "original_text": "2026. 4. 28.",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_022",
+      "original_text": "전화",
+      "page": 1,
+      "in_table": true
+    },
+    {
+      "token": "text_023",
+      "original_text": "/전송",
+      "page": 1,
+      "in_table": true
+    }
+  ]
+}
