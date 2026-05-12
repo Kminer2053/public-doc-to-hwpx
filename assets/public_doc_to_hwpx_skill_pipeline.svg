@@ -1,139 +1,81 @@
-<svg viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg" width="100%">
-<rect width="800" height="1000" fill="#1a1a1a"/>
+<svg width="100%" viewBox="0 0 680 720" role="img" style="" xmlns="http://www.w3.org/2000/svg">
+<title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">스킬 작동 구조 (쉬운 설명)</title>
+<desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">AI가 한글 보고서를 만드는 5단계 과정을 비전공자도 이해하기 쉽게 설명한 그림</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<mask id="imagine-text-gaps-bu8qcr" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="680" height="720" fill="white"/><rect x="249.18359375" y="45.25" width="181.6328125" height="21.5" fill="black" rx="2"/><rect x="228.890625" y="66.5" width="222.21875" height="19" fill="black" rx="2"/><rect x="225.94921875" y="135.25" width="228.1015625" height="21.5" fill="black" rx="2"/><rect x="246.84375" y="156.5" width="186.3125" height="19" fill="black" rx="2"/><rect x="95.796875" y="189.25" width="74.40625" height="21.5" fill="black" rx="2"/><rect x="101.77734375" y="206.5" width="62.4453125" height="19" fill="black" rx="2"/><rect x="231.203125" y="189.25" width="83.59375" height="21.5" fill="black" rx="2"/><rect x="241.77734375" y="206.5" width="62.4453125" height="19" fill="black" rx="2"/><rect x="396.88671875" y="189.25" width="32.2265625" height="21.5" fill="black" rx="2"/><rect x="381.77734375" y="206.5" width="62.4453125" height="19" fill="black" rx="2"/><rect x="530.83203125" y="189.25" width="44.3359375" height="21.5" fill="black" rx="2"/><rect x="521.77734375" y="206.5" width="62.4453125" height="19" fill="black" rx="2"/><rect x="226.109375" y="285.25" width="227.78125" height="21.5" fill="black" rx="2"/><rect x="241.22265625" y="306.5" width="197.5546875" height="19" fill="black" rx="2"/><rect x="245.32421875" y="326.5" width="189.3515625" height="19" fill="black" rx="2"/><rect x="191.41015625" y="397.25" width="297.1796875" height="21.5" fill="black" rx="2"/><rect x="187.8984375" y="420.5" width="304.203125" height="19" fill="black" rx="2"/><rect x="131.00390625" y="458.5" width="97.9921875" height="19" fill="black" rx="2"/><rect x="313.96484375" y="468.5" width="52.0703125" height="19" fill="black" rx="2"/><rect x="463.5859375" y="458.5" width="72.828125" height="19" fill="black" rx="2"/><rect x="221.6796875" y="585.25" width="236.640625" height="21.5" fill="black" rx="2"/><rect x="219.375" y="606.5" width="241.25" height="19" fill="black" rx="2"/><rect x="218.10546875" y="626.5" width="243.7890625" height="19" fill="black" rx="2"/><rect x="210.08203125" y="684" width="259.8359375" height="19" fill="black" rx="2"/></mask></defs>
 
-<text x="400" y="35" font-size="20" font-weight="bold" fill="white" text-anchor="middle">공공기관 보고서 AI 자동생성 - 6단계 프로세스</text>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<rect x="40" y="30" width="600" height="60" rx="10" stroke-width="0.5" style="fill:rgb(68, 68, 65);stroke:rgb(180, 178, 169);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="340" y="56" text-anchor="middle" dominant-baseline="central" style="fill:rgb(211, 209, 199);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">1단계 · 무엇을 보고하실 건가요?</text>
+<text x="340" y="76" text-anchor="middle" dominant-baseline="central" style="fill:rgb(180, 178, 169);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">사용자가 말하거나 자료를 주면 AI가 듣고 시작</text>
+</g>
 
-<!-- STEP 1 -->
-<text x="50" y="65" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 1. 콘텐츠 입력</text>
-<rect x="40" y="75" width="720" height="65" rx="8" fill="#333333" stroke="#555555" stroke-width="1"/>
-<text x="400" y="100" font-size="14" font-weight="bold" fill="white" text-anchor="middle">당신이 요청하거나 파일 업로드</text>
-<text x="400" y="120" font-size="11" fill="#dddddd" text-anchor="middle">"AI 역량 강화 추진계획 작성해줄래?" 또는 마크다운/PDF 업로드</text>
+<line x1="340" y1="90" x2="340" y2="120" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-<line x1="400" y1="140" x2="400" y2="165" stroke="#666666" stroke-width="2"/>
-<polygon points="400,170 395,160 405,160" fill="#666666"/>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<rect x="40" y="120" width="600" height="120" rx="10" stroke-width="0.5" style="fill:rgb(68, 68, 65);stroke:rgb(180, 178, 169);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="340" y="146" text-anchor="middle" dominant-baseline="central" style="fill:rgb(211, 209, 199);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">2단계 · 어떤 양식이 좋을지 골라드릴게요</text>
+<text x="340" y="166" text-anchor="middle" dominant-baseline="central" style="fill:rgb(180, 178, 169);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">분량과 받는 사람에 맞춰 4가지 중 추천</text>
 
-<!-- STEP 2 -->
-<text x="50" y="195" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 2. 보고서 양식 선택</text>
+<rect x="68" y="184" width="130" height="42" rx="6" fill="var(--color-background-primary)" stroke="var(--color-border-tertiary)" stroke-width="0.5" style="fill:rgb(68, 68, 65);stroke:rgb(180, 178, 169);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="133" y="200" text-anchor="middle" dominant-baseline="central" style="fill:rgb(211, 209, 199);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">한 장 보고서</text>
+<text x="133" y="216" text-anchor="middle" dominant-baseline="central" style="fill:rgb(180, 178, 169);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">간단 보고용</text>
 
-<rect x="40" y="205" width="170" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8" stroke-width="1"/>
-<text x="125" y="230" font-size="13" font-weight="bold" fill="white" text-anchor="middle">1페이지</text>
-<text x="125" y="245" font-size="11" fill="#dddddd" text-anchor="middle">의사결정자용</text>
-<text x="125" y="258" font-size="11" fill="#dddddd" text-anchor="middle">핵심만 압축</text>
-<text x="125" y="272" font-size="10" fill="#cccccc" text-anchor="middle">(35개 항목)</text>
+<rect x="208" y="184" width="130" height="42" rx="6" fill="var(--color-background-primary)" stroke="var(--color-border-tertiary)" stroke-width="0.5" style="fill:rgb(68, 68, 65);stroke:rgb(180, 178, 169);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="273" y="200" text-anchor="middle" dominant-baseline="central" style="fill:rgb(211, 209, 199);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">풀버전 보고서</text>
+<text x="273" y="216" text-anchor="middle" dominant-baseline="central" style="fill:rgb(180, 178, 169);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">상세 보고용</text>
 
-<rect x="230" y="205" width="170" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8" stroke-width="1"/>
-<text x="315" y="230" font-size="13" font-weight="bold" fill="white" text-anchor="middle">풀버전</text>
-<text x="315" y="245" font-size="11" fill="#dddddd" text-anchor="middle">상세 보고서</text>
-<text x="315" y="258" font-size="11" fill="#dddddd" text-anchor="middle">표지+목차+본문</text>
-<text x="315" y="272" font-size="10" fill="#cccccc" text-anchor="middle">(127개 항목)</text>
+<rect x="348" y="184" width="130" height="42" rx="6" fill="var(--color-background-primary)" stroke="var(--color-border-tertiary)" stroke-width="0.5" style="fill:rgb(68, 68, 65);stroke:rgb(180, 178, 169);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="413" y="200" text-anchor="middle" dominant-baseline="central" style="fill:rgb(211, 209, 199);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">공문</text>
+<text x="413" y="216" text-anchor="middle" dominant-baseline="central" style="fill:rgb(180, 178, 169);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">외부 발송용</text>
 
-<rect x="420" y="205" width="170" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8" stroke-width="1"/>
-<text x="505" y="230" font-size="13" font-weight="bold" fill="white" text-anchor="middle">공문</text>
-<text x="505" y="245" font-size="11" fill="#dddddd" text-anchor="middle">외부기관용</text>
-<text x="505" y="258" font-size="11" fill="#dddddd" text-anchor="middle">형식 엄수</text>
-<text x="505" y="272" font-size="10" fill="#cccccc" text-anchor="middle">(27개 항목)</text>
+<rect x="488" y="184" width="130" height="42" rx="6" fill="var(--color-background-primary)" stroke="var(--color-border-tertiary)" stroke-width="0.5" style="fill:rgb(68, 68, 65);stroke:rgb(180, 178, 169);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="553" y="200" text-anchor="middle" dominant-baseline="central" style="fill:rgb(211, 209, 199);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">이메일</text>
+<text x="553" y="216" text-anchor="middle" dominant-baseline="central" style="fill:rgb(180, 178, 169);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">짧은 안내용</text>
+</g>
 
-<rect x="610" y="205" width="150" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8" stroke-width="1"/>
-<text x="685" y="230" font-size="13" font-weight="bold" fill="white" text-anchor="middle">메일</text>
-<text x="685" y="245" font-size="11" fill="#dddddd" text-anchor="middle">협업자용</text>
-<text x="685" y="258" font-size="11" fill="#dddddd" text-anchor="middle">본문만</text>
-<text x="685" y="272" font-size="10" fill="#cccccc" text-anchor="middle">(텍스트)</text>
+<line x1="340" y1="240" x2="340" y2="270" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-<line x1="400" y1="295" x2="400" y2="320" stroke="#666666" stroke-width="2"/>
-<polygon points="400,325 395,315 405,315" fill="#666666"/>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<rect x="40" y="270" width="600" height="80" rx="10" stroke-width="0.5" style="fill:rgb(68, 68, 65);stroke:rgb(180, 178, 169);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="340" y="296" text-anchor="middle" dominant-baseline="central" style="fill:rgb(211, 209, 199);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">3단계 · 보고서 글쓰기 규칙대로 다듬어요</text>
+<text x="340" y="316" text-anchor="middle" dominant-baseline="central" style="fill:rgb(180, 178, 169);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">결론 먼저, 한 문장에 한 가지, 핵심만 짧게</text>
+<text x="340" y="336" text-anchor="middle" dominant-baseline="central" style="fill:rgb(180, 178, 169);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">보고 종류에 맞는 목차 구조도 자동 적용</text>
+</g>
 
-<!-- STEP 3 -->
-<text x="50" y="350" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 3. 글쓰기 품질 높이기</text>
+<line x1="340" y1="350" x2="340" y2="380" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-<rect x="40" y="360" width="220" height="110" rx="6" fill="#0a4a3a" stroke="#4d9b7f" stroke-width="1"/>
-<text x="150" y="385" font-size="12" font-weight="bold" fill="white" text-anchor="middle">보고서 원칙</text>
-<text x="150" y="400" font-size="11" fill="#dddddd" text-anchor="middle">개조식</text>
-<text x="150" y="413" font-size="11" fill="#dddddd" text-anchor="middle">두괄식 (결론부터)</text>
-<text x="150" y="426" font-size="11" fill="#dddddd" text-anchor="middle">한 문장 한 핵심</text>
-<text x="150" y="439" font-size="11" fill="#dddddd" text-anchor="middle">적·의·것·들 정리</text>
-<text x="150" y="455" font-size="10" fill="#cccccc" text-anchor="middle">30초면 이해!</text>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<rect x="40" y="380" width="600" height="160" rx="10" stroke-width="1" style="fill:rgb(8, 80, 65);stroke:rgb(93, 202, 165);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="340" y="408" text-anchor="middle" dominant-baseline="central" style="fill:rgb(159, 225, 203);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">4단계 · 회사 양식의 빈칸에 내용을 채워 넣어요  (핵심)</text>
+<text x="340" y="430" text-anchor="middle" dominant-baseline="central" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">양식의 표·테두리·로고·결재선은 그대로 두고 글만 채워 넣는 방식</text>
 
-<rect x="280" y="360" width="220" height="110" rx="6" fill="#0a4a3a" stroke="#4d9b7f" stroke-width="1"/>
-<text x="390" y="385" font-size="12" font-weight="bold" fill="white" text-anchor="middle">목차 구조</text>
-<text x="390" y="400" font-size="11" fill="#dddddd" text-anchor="middle">11가지 보고 유형</text>
-<text x="390" y="413" font-size="11" fill="#dddddd" text-anchor="middle">현황·동향</text>
-<text x="390" y="426" font-size="11" fill="#dddddd" text-anchor="middle">검토·의사결정</text>
-<text x="390" y="439" font-size="11" fill="#dddddd" text-anchor="middle">계획·결과·이슈</text>
-<text x="390" y="455" font-size="10" fill="#cccccc" text-anchor="middle">표준 골격 제공</text>
+<rect x="80" y="450" width="200" height="70" rx="8" fill="var(--color-background-primary)" stroke="var(--color-border-tertiary)" stroke-width="0.5" style="fill:rgb(8, 80, 65);stroke:rgb(93, 202, 165);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="180" y="468" text-anchor="middle" dominant-baseline="central" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">빈 양식 (회사 표준)</text>
+<line x1="100" y1="486" x2="260" y2="486" stroke="var(--color-border-tertiary)" stroke-width="0.5" stroke-dasharray="2 2" style="fill:rgb(0, 0, 0);stroke:rgba(222, 220, 209, 0.15);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-dasharray:2px, 2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<line x1="100" y1="498" x2="260" y2="498" stroke="var(--color-border-tertiary)" stroke-width="0.5" stroke-dasharray="2 2" style="fill:rgb(0, 0, 0);stroke:rgba(222, 220, 209, 0.15);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-dasharray:2px, 2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<line x1="100" y1="510" x2="220" y2="510" stroke="var(--color-border-tertiary)" stroke-width="0.5" stroke-dasharray="2 2" style="fill:rgb(0, 0, 0);stroke:rgba(222, 220, 209, 0.15);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-dasharray:2px, 2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-<rect x="520" y="360" width="240" height="110" rx="6" fill="#0a4a3a" stroke="#4d9b7f" stroke-width="1"/>
-<text x="640" y="385" font-size="12" font-weight="bold" fill="white" text-anchor="middle">양식별 규칙</text>
-<text x="640" y="400" font-size="11" fill="#dddddd" text-anchor="middle">1p 가이드</text>
-<text x="640" y="413" font-size="11" fill="#dddddd" text-anchor="middle">풀버전 가이드</text>
-<text x="640" y="426" font-size="11" fill="#dddddd" text-anchor="middle">공문 가이드</text>
-<text x="640" y="439" font-size="11" fill="#dddddd" text-anchor="middle">우수 예시</text>
-<text x="640" y="455" font-size="10" fill="#cccccc" text-anchor="middle">따라 하기만!</text>
+<line x1="290" y1="485" x2="390" y2="485" marker-end="url(#arrow)" mask="url(#imagine-text-gaps-bu8qcr)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="340" y="478" text-anchor="middle" dominant-baseline="central" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">내용 채움</text>
 
-<line x1="400" y1="470" x2="400" y2="495" stroke="#666666" stroke-width="2"/>
-<polygon points="400,500 395,490 405,490" fill="#666666"/>
+<rect x="400" y="450" width="200" height="70" rx="8" fill="var(--color-background-primary)" stroke="var(--color-border-tertiary)" stroke-width="0.5" style="fill:rgb(8, 80, 65);stroke:rgb(93, 202, 165);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="500" y="468" text-anchor="middle" dominant-baseline="central" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">완성된 보고서</text>
+<line x1="420" y1="486" x2="580" y2="486" stroke="var(--color-text-secondary)" stroke-width="0.7" style="fill:rgb(0, 0, 0);stroke:rgb(194, 192, 182);color:rgb(255, 255, 255);stroke-width:0.7px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<line x1="420" y1="498" x2="580" y2="498" stroke="var(--color-text-secondary)" stroke-width="0.7" style="fill:rgb(0, 0, 0);stroke:rgb(194, 192, 182);color:rgb(255, 255, 255);stroke-width:0.7px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<line x1="420" y1="510" x2="540" y2="510" stroke="var(--color-text-secondary)" stroke-width="0.7" style="fill:rgb(0, 0, 0);stroke:rgb(194, 192, 182);color:rgb(255, 255, 255);stroke-width:0.7px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+</g>
 
-<!-- STEP 4 -->
-<text x="50" y="525" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 4. 내용을 양식 칸에 맞추기</text>
+<line x1="340" y1="540" x2="340" y2="570" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-<rect x="40" y="535" width="340" height="100" rx="6" fill="#3a2d6a" stroke="#7f78b3" stroke-width="1"/>
-<text x="210" y="560" font-size="12" font-weight="bold" fill="white" text-anchor="middle">양식의 빈 칸들</text>
-<text x="210" y="577" font-size="11" fill="#dddddd" text-anchor="middle">(skeleton_mapping.json)</text>
-<text x="210" y="595" font-size="11" fill="#dddddd" text-anchor="middle">제목, 작성자, 핵심내용</text>
-<text x="210" y="610" font-size="11" fill="#dddddd" text-anchor="middle">어디에 뭘 넣을지 안내</text>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<rect x="40" y="570" width="600" height="80" rx="10" stroke-width="0.5" style="fill:rgb(39, 80, 10);stroke:rgb(151, 196, 89);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="340" y="596" text-anchor="middle" dominant-baseline="central" style="fill:rgb(192, 221, 151);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">5단계 · 바로 쓸 수 있는 한글 파일이 됩니다</text>
+<text x="340" y="616" text-anchor="middle" dominant-baseline="central" style="fill:rgb(151, 196, 89);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">한글 프로그램에서 열면 회사 양식 그대로 보입니다</text>
+<text x="340" y="636" text-anchor="middle" dominant-baseline="central" style="fill:rgb(151, 196, 89);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">필요한 부분만 살짝 다듬어서 바로 결재 올리기 가능</text>
+</g>
 
-<text x="420" y="580" font-size="24" fill="#cccccc" text-anchor="middle">+</text>
-
-<rect x="450" y="535" width="310" height="100" rx="6" fill="#3a2d6a" stroke="#7f78b3" stroke-width="1"/>
-<text x="605" y="560" font-size="12" font-weight="bold" fill="white" text-anchor="middle">당신의 콘텐츠</text>
-<text x="605" y="577" font-size="11" fill="#dddddd" text-anchor="middle">(values.json)</text>
-<text x="605" y="595" font-size="11" fill="#dddddd" text-anchor="middle">Claude가 추출하고</text>
-<text x="605" y="610" font-size="11" fill="#dddddd" text-anchor="middle">정리한 내용</text>
-
-<line x1="400" y1="635" x2="400" y2="660" stroke="#666666" stroke-width="2"/>
-<polygon points="400,665 395,655 405,655" fill="#666666"/>
-
-<!-- STEP 5 -->
-<text x="50" y="690" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 5. 한글 문서 자동생성</text>
-
-<rect x="40" y="700" width="160" height="75" rx="6" fill="#664400" stroke="#d4a85a" stroke-width="1"/>
-<text x="120" y="725" font-size="11" font-weight="bold" fill="white" text-anchor="middle">칸 채우기</text>
-<text x="120" y="743" font-size="10" fill="#dddddd" text-anchor="middle">빈 칸에</text>
-<text x="120" y="756" font-size="10" fill="#dddddd" text-anchor="middle">콘텐츠 넣기</text>
-
-<line x1="200" y1="737" x2="225" y2="737" stroke="#666666" stroke-width="2"/>
-<polygon points="230,737 220,732 220,742" fill="#666666"/>
-
-<rect x="235" y="700" width="160" height="75" rx="6" fill="#664400" stroke="#d4a85a" stroke-width="1"/>
-<text x="315" y="725" font-size="11" font-weight="bold" fill="white" text-anchor="middle">호환성 점검</text>
-<text x="315" y="743" font-size="10" fill="#dddddd" text-anchor="middle">한글</text>
-<text x="315" y="756" font-size="10" fill="#dddddd" text-anchor="middle">읽기 맞추기</text>
-
-<line x1="395" y1="737" x2="420" y2="737" stroke="#666666" stroke-width="2"/>
-<polygon points="425,737 415,732 415,742" fill="#666666"/>
-
-<rect x="430" y="700" width="160" height="75" rx="6" fill="#664400" stroke="#d4a85a" stroke-width="1"/>
-<text x="510" y="725" font-size="11" font-weight="bold" fill="white" text-anchor="middle">쪽번호 자동</text>
-<text x="510" y="743" font-size="10" fill="#dddddd" text-anchor="middle">목차의</text>
-<text x="510" y="756" font-size="10" fill="#dddddd" text-anchor="middle">쪽번호 계산</text>
-
-<line x1="590" y1="737" x2="615" y2="737" stroke="#666666" stroke-width="2"/>
-<polygon points="620,737 610,732 610,742" fill="#666666"/>
-
-<rect x="625" y="700" width="135" height="75" rx="6" fill="#664400" stroke="#d4a85a" stroke-width="1"/>
-<text x="692" y="725" font-size="11" font-weight="bold" fill="white" text-anchor="middle">검사</text>
-<text x="692" y="743" font-size="10" fill="#dddddd" text-anchor="middle">문서</text>
-<text x="692" y="756" font-size="10" fill="#dddddd" text-anchor="middle">무결성 확인</text>
-
-<line x1="400" y1="775" x2="400" y2="800" stroke="#666666" stroke-width="2"/>
-<polygon points="400,805 395,795 405,795" fill="#666666"/>
-
-<!-- STEP 6 -->
-<text x="50" y="830" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 6. 완성된 보고서</text>
-<rect x="40" y="840" width="720" height="70" rx="8" fill="#1a3d0a" stroke="#5a9e3a" stroke-width="1"/>
-<text x="400" y="865" font-size="14" font-weight="bold" fill="white" text-anchor="middle">한글 문서 (.hwpx) 또는 메일 본문 (.md/.txt)</text>
-<text x="400" y="885" font-size="11" fill="#dddddd" text-anchor="middle">테이블·테두리·음영·페이지헤더 100% 그대로 - 바로 사용 가능!</text>
-
-<!-- Footer -->
-<text x="400" y="945" font-size="11" fill="#888888" text-anchor="middle" font-style="italic">핵심: 빈 골격 + 당신의 콘텐츠 = 양식 디자인 100% 보존된 완벽한 보고서</text>
-
+<line x1="220" y1="676" x2="460" y2="676" stroke="var(--color-border-tertiary)" stroke-width="0.5" style="fill:rgb(0, 0, 0);stroke:rgba(222, 220, 209, 0.15);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<text x="340" y="698" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">핵심: 양식은 그대로 살리고, 내용만 새로 채워 넣습니다</text>
 </svg>
