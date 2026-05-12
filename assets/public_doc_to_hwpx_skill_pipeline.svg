@@ -1,168 +1,139 @@
-<svg width="100%" viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<style>
-  body { background: #1a1a1a; }
-  .title { font-size: 20px; font-weight: bold; fill: #ffffff; text-anchor: middle; }
-  .step-label { font-size: 12px; font-weight: bold; fill: #aaaaaa; }
-  .box-title { font-size: 14px; font-weight: bold; fill: #ffffff; text-anchor: middle; }
-  .box-text { font-size: 11px; fill: #dddddd; text-anchor: middle; }
-  .small-text { font-size: 10px; fill: #cccccc; text-anchor: middle; }
-</style>
-</defs>
-
-<!-- Background -->
+<svg viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg" width="100%">
 <rect width="800" height="1000" fill="#1a1a1a"/>
 
-<!-- Title -->
-<text x="400" y="30" class="title">공공기관 보고서 AI 자동생성 - 6단계 프로세스</text>
+<text x="400" y="35" font-size="20" font-weight="bold" fill="white" text-anchor="middle">공공기관 보고서 AI 자동생성 - 6단계 프로세스</text>
 
 <!-- STEP 1 -->
-<text x="50" y="60" class="step-label">STEP 1. 콘텐츠 입력</text>
-<rect x="40" y="70" width="720" height="65" rx="8" fill="#333333" stroke="#555555"/>
-<text x="400" y="95" class="box-title">당신이 요청하거나 파일 업로드</text>
-<text x="400" y="115" class="box-text">"AI 역량 강화 추진계획 작성해줄래?" 또는 마크다운/PDF 업로드</text>
+<text x="50" y="65" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 1. 콘텐츠 입력</text>
+<rect x="40" y="75" width="720" height="65" rx="8" fill="#333333" stroke="#555555" stroke-width="1"/>
+<text x="400" y="100" font-size="14" font-weight="bold" fill="white" text-anchor="middle">당신이 요청하거나 파일 업로드</text>
+<text x="400" y="120" font-size="11" fill="#dddddd" text-anchor="middle">"AI 역량 강화 추진계획 작성해줄래?" 또는 마크다운/PDF 업로드</text>
 
-<!-- Arrow -->
-<line x1="400" y1="135" x2="400" y2="160" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)"/>
-<defs>
-<marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
-<polygon points="0 0, 10 3, 0 6" fill="#666666" />
-</marker>
-</defs>
+<line x1="400" y1="140" x2="400" y2="165" stroke="#666666" stroke-width="2"/>
+<polygon points="400,170 395,160 405,160" fill="#666666"/>
 
 <!-- STEP 2 -->
-<text x="50" y="190" class="step-label">STEP 2. 보고서 양식 선택</text>
+<text x="50" y="195" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 2. 보고서 양식 선택</text>
 
-<!-- 1p -->
-<rect x="40" y="200" width="170" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8"/>
-<text x="125" y="225" class="box-title" style="font-size: 13px;">1페이지</text>
-<text x="125" y="242" class="box-text">의사결정자용</text>
-<text x="125" y="257" class="box-text">핵심만 압축</text>
-<text x="125" y="272" class="small-text">(35개 항목)</text>
+<rect x="40" y="205" width="170" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8" stroke-width="1"/>
+<text x="125" y="230" font-size="13" font-weight="bold" fill="white" text-anchor="middle">1페이지</text>
+<text x="125" y="245" font-size="11" fill="#dddddd" text-anchor="middle">의사결정자용</text>
+<text x="125" y="258" font-size="11" fill="#dddddd" text-anchor="middle">핵심만 압축</text>
+<text x="125" y="272" font-size="10" fill="#cccccc" text-anchor="middle">(35개 항목)</text>
 
-<!-- Full -->
-<rect x="230" y="200" width="170" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8"/>
-<text x="315" y="225" class="box-title" style="font-size: 13px;">풀버전</text>
-<text x="315" y="242" class="box-text">상세 보고서</text>
-<text x="315" y="257" class="box-text">표지+목차+본문</text>
-<text x="315" y="272" class="small-text">(127개 항목)</text>
+<rect x="230" y="205" width="170" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8" stroke-width="1"/>
+<text x="315" y="230" font-size="13" font-weight="bold" fill="white" text-anchor="middle">풀버전</text>
+<text x="315" y="245" font-size="11" fill="#dddddd" text-anchor="middle">상세 보고서</text>
+<text x="315" y="258" font-size="11" fill="#dddddd" text-anchor="middle">표지+목차+본문</text>
+<text x="315" y="272" font-size="10" fill="#cccccc" text-anchor="middle">(127개 항목)</text>
 
-<!-- Gongmun -->
-<rect x="420" y="200" width="170" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8"/>
-<text x="505" y="225" class="box-title" style="font-size: 13px;">공문</text>
-<text x="505" y="242" class="box-text">외부기관용</text>
-<text x="505" y="257" class="box-text">형식 엄수</text>
-<text x="505" y="272" class="small-text">(27개 항목)</text>
+<rect x="420" y="205" width="170" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8" stroke-width="1"/>
+<text x="505" y="230" font-size="13" font-weight="bold" fill="white" text-anchor="middle">공문</text>
+<text x="505" y="245" font-size="11" fill="#dddddd" text-anchor="middle">외부기관용</text>
+<text x="505" y="258" font-size="11" fill="#dddddd" text-anchor="middle">형식 엄수</text>
+<text x="505" y="272" font-size="10" fill="#cccccc" text-anchor="middle">(27개 항목)</text>
 
-<!-- Email -->
-<rect x="610" y="200" width="150" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8"/>
-<text x="685" y="225" class="box-title" style="font-size: 13px;">메일</text>
-<text x="685" y="242" class="box-text">협업자용</text>
-<text x="685" y="257" class="box-text">본문만</text>
-<text x="685" y="272" class="small-text">(텍스트)</text>
+<rect x="610" y="205" width="150" height="90" rx="6" fill="#1a4d80" stroke="#3d7ab8" stroke-width="1"/>
+<text x="685" y="230" font-size="13" font-weight="bold" fill="white" text-anchor="middle">메일</text>
+<text x="685" y="245" font-size="11" fill="#dddddd" text-anchor="middle">협업자용</text>
+<text x="685" y="258" font-size="11" fill="#dddddd" text-anchor="middle">본문만</text>
+<text x="685" y="272" font-size="10" fill="#cccccc" text-anchor="middle">(텍스트)</text>
 
-<!-- Arrow -->
-<line x1="400" y1="290" x2="400" y2="315" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="400" y1="295" x2="400" y2="320" stroke="#666666" stroke-width="2"/>
+<polygon points="400,325 395,315 405,315" fill="#666666"/>
 
 <!-- STEP 3 -->
-<text x="50" y="345" class="step-label">STEP 3. 글쓰기 품질 높이기</text>
+<text x="50" y="350" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 3. 글쓰기 품질 높이기</text>
 
-<!-- Box 1 -->
-<rect x="40" y="355" width="220" height="110" rx="6" fill="#0a4a3a" stroke="#4d9b7f"/>
-<text x="150" y="380" class="box-title" style="font-size: 12px;">보고서 원칙</text>
-<text x="150" y="395" class="box-text">개조식</text>
-<text x="150" y="408" class="box-text">두괄식 (결론부터)</text>
-<text x="150" y="421" class="box-text">한 문장 한 핵심</text>
-<text x="150" y="434" class="box-text">적·의·것·들 정리</text>
-<text x="150" y="450" class="small-text">30초면 이해!</text>
+<rect x="40" y="360" width="220" height="110" rx="6" fill="#0a4a3a" stroke="#4d9b7f" stroke-width="1"/>
+<text x="150" y="385" font-size="12" font-weight="bold" fill="white" text-anchor="middle">보고서 원칙</text>
+<text x="150" y="400" font-size="11" fill="#dddddd" text-anchor="middle">개조식</text>
+<text x="150" y="413" font-size="11" fill="#dddddd" text-anchor="middle">두괄식 (결론부터)</text>
+<text x="150" y="426" font-size="11" fill="#dddddd" text-anchor="middle">한 문장 한 핵심</text>
+<text x="150" y="439" font-size="11" fill="#dddddd" text-anchor="middle">적·의·것·들 정리</text>
+<text x="150" y="455" font-size="10" fill="#cccccc" text-anchor="middle">30초면 이해!</text>
 
-<!-- Box 2 -->
-<rect x="280" y="355" width="220" height="110" rx="6" fill="#0a4a3a" stroke="#4d9b7f"/>
-<text x="390" y="380" class="box-title" style="font-size: 12px;">목차 구조</text>
-<text x="390" y="395" class="box-text">11가지 보고 유형</text>
-<text x="390" y="408" class="box-text">현황·동향</text>
-<text x="390" y="421" class="box-text">검토·의사결정</text>
-<text x="390" y="434" class="box-text">계획·결과·이슈</text>
-<text x="390" y="450" class="small-text">표준 골격 제공</text>
+<rect x="280" y="360" width="220" height="110" rx="6" fill="#0a4a3a" stroke="#4d9b7f" stroke-width="1"/>
+<text x="390" y="385" font-size="12" font-weight="bold" fill="white" text-anchor="middle">목차 구조</text>
+<text x="390" y="400" font-size="11" fill="#dddddd" text-anchor="middle">11가지 보고 유형</text>
+<text x="390" y="413" font-size="11" fill="#dddddd" text-anchor="middle">현황·동향</text>
+<text x="390" y="426" font-size="11" fill="#dddddd" text-anchor="middle">검토·의사결정</text>
+<text x="390" y="439" font-size="11" fill="#dddddd" text-anchor="middle">계획·결과·이슈</text>
+<text x="390" y="455" font-size="10" fill="#cccccc" text-anchor="middle">표준 골격 제공</text>
 
-<!-- Box 3 -->
-<rect x="520" y="355" width="240" height="110" rx="6" fill="#0a4a3a" stroke="#4d9b7f"/>
-<text x="640" y="380" class="box-title" style="font-size: 12px;">양식별 규칙</text>
-<text x="640" y="395" class="box-text">1p 가이드</text>
-<text x="640" y="408" class="box-text">풀버전 가이드</text>
-<text x="640" y="421" class="box-text">공문 가이드</text>
-<text x="640" y="434" class="box-text">우수 예시</text>
-<text x="640" y="450" class="small-text">따라 하기만!</text>
+<rect x="520" y="360" width="240" height="110" rx="6" fill="#0a4a3a" stroke="#4d9b7f" stroke-width="1"/>
+<text x="640" y="385" font-size="12" font-weight="bold" fill="white" text-anchor="middle">양식별 규칙</text>
+<text x="640" y="400" font-size="11" fill="#dddddd" text-anchor="middle">1p 가이드</text>
+<text x="640" y="413" font-size="11" fill="#dddddd" text-anchor="middle">풀버전 가이드</text>
+<text x="640" y="426" font-size="11" fill="#dddddd" text-anchor="middle">공문 가이드</text>
+<text x="640" y="439" font-size="11" fill="#dddddd" text-anchor="middle">우수 예시</text>
+<text x="640" y="455" font-size="10" fill="#cccccc" text-anchor="middle">따라 하기만!</text>
 
-<!-- Arrow -->
-<line x1="400" y1="465" x2="400" y2="490" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="400" y1="470" x2="400" y2="495" stroke="#666666" stroke-width="2"/>
+<polygon points="400,500 395,490 405,490" fill="#666666"/>
 
 <!-- STEP 4 -->
-<text x="50" y="520" class="step-label">STEP 4. 내용을 양식 칸에 맞추기</text>
+<text x="50" y="525" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 4. 내용을 양식 칸에 맞추기</text>
 
-<!-- Left box -->
-<rect x="40" y="530" width="340" height="100" rx="6" fill="#3a2d6a" stroke="#7f78b3"/>
-<text x="210" y="555" class="box-title" style="font-size: 12px;">양식의 빈 칸들</text>
-<text x="210" y="572" class="box-text">(skeleton_mapping.json)</text>
-<text x="210" y="590" class="box-text">제목, 작성자, 핵심내용</text>
-<text x="210" y="605" class="box-text">어디에 뭘 넣을지 안내</text>
+<rect x="40" y="535" width="340" height="100" rx="6" fill="#3a2d6a" stroke="#7f78b3" stroke-width="1"/>
+<text x="210" y="560" font-size="12" font-weight="bold" fill="white" text-anchor="middle">양식의 빈 칸들</text>
+<text x="210" y="577" font-size="11" fill="#dddddd" text-anchor="middle">(skeleton_mapping.json)</text>
+<text x="210" y="595" font-size="11" fill="#dddddd" text-anchor="middle">제목, 작성자, 핵심내용</text>
+<text x="210" y="610" font-size="11" fill="#dddddd" text-anchor="middle">어디에 뭘 넣을지 안내</text>
 
-<!-- Plus -->
-<text x="420" y="575" style="font-size: 24px; text-anchor: middle; fill: #cccccc;">+</text>
+<text x="420" y="580" font-size="24" fill="#cccccc" text-anchor="middle">+</text>
 
-<!-- Right box -->
-<rect x="450" y="530" width="310" height="100" rx="6" fill="#3a2d6a" stroke="#7f78b3"/>
-<text x="605" y="555" class="box-title" style="font-size: 12px;">당신의 콘텐츠</text>
-<text x="605" y="572" class="box-text">(values.json)</text>
-<text x="605" y="590" class="box-text">Claude가 추출하고</text>
-<text x="605" y="605" class="box-text">정리한 내용</text>
+<rect x="450" y="535" width="310" height="100" rx="6" fill="#3a2d6a" stroke="#7f78b3" stroke-width="1"/>
+<text x="605" y="560" font-size="12" font-weight="bold" fill="white" text-anchor="middle">당신의 콘텐츠</text>
+<text x="605" y="577" font-size="11" fill="#dddddd" text-anchor="middle">(values.json)</text>
+<text x="605" y="595" font-size="11" fill="#dddddd" text-anchor="middle">Claude가 추출하고</text>
+<text x="605" y="610" font-size="11" fill="#dddddd" text-anchor="middle">정리한 내용</text>
 
-<!-- Arrow -->
-<line x1="400" y1="630" x2="400" y2="655" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="400" y1="635" x2="400" y2="660" stroke="#666666" stroke-width="2"/>
+<polygon points="400,665 395,655 405,655" fill="#666666"/>
 
 <!-- STEP 5 -->
-<text x="50" y="685" class="step-label">STEP 5. 한글 문서 자동생성</text>
+<text x="50" y="690" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 5. 한글 문서 자동생성</text>
 
-<!-- Pipeline boxes -->
-<rect x="40" y="695" width="160" height="75" rx="6" fill="#664400" stroke="#d4a85a"/>
-<text x="120" y="720" class="box-title" style="font-size: 11px;">칸 채우기</text>
-<text x="120" y="738" class="box-text" style="font-size: 10px;">빈 칸에</text>
-<text x="120" y="751" class="box-text" style="font-size: 10px;">콘텐츠 넣기</text>
+<rect x="40" y="700" width="160" height="75" rx="6" fill="#664400" stroke="#d4a85a" stroke-width="1"/>
+<text x="120" y="725" font-size="11" font-weight="bold" fill="white" text-anchor="middle">칸 채우기</text>
+<text x="120" y="743" font-size="10" fill="#dddddd" text-anchor="middle">빈 칸에</text>
+<text x="120" y="756" font-size="10" fill="#dddddd" text-anchor="middle">콘텐츠 넣기</text>
 
-<!-- Arrow -->
-<line x1="200" y1="732" x2="225" y2="732" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="200" y1="737" x2="225" y2="737" stroke="#666666" stroke-width="2"/>
+<polygon points="230,737 220,732 220,742" fill="#666666"/>
 
-<rect x="235" y="695" width="160" height="75" rx="6" fill="#664400" stroke="#d4a85a"/>
-<text x="315" y="720" class="box-title" style="font-size: 11px;">호환성 점검</text>
-<text x="315" y="738" class="box-text" style="font-size: 10px;">한글</text>
-<text x="315" y="751" class="box-text" style="font-size: 10px;">읽기 맞추기</text>
+<rect x="235" y="700" width="160" height="75" rx="6" fill="#664400" stroke="#d4a85a" stroke-width="1"/>
+<text x="315" y="725" font-size="11" font-weight="bold" fill="white" text-anchor="middle">호환성 점검</text>
+<text x="315" y="743" font-size="10" fill="#dddddd" text-anchor="middle">한글</text>
+<text x="315" y="756" font-size="10" fill="#dddddd" text-anchor="middle">읽기 맞추기</text>
 
-<!-- Arrow -->
-<line x1="395" y1="732" x2="420" y2="732" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="395" y1="737" x2="420" y2="737" stroke="#666666" stroke-width="2"/>
+<polygon points="425,737 415,732 415,742" fill="#666666"/>
 
-<rect x="430" y="695" width="160" height="75" rx="6" fill="#664400" stroke="#d4a85a"/>
-<text x="510" y="720" class="box-title" style="font-size: 11px;">쪽번호 자동</text>
-<text x="510" y="738" class="box-text" style="font-size: 10px;">목차의</text>
-<text x="510" y="751" class="box-text" style="font-size: 10px;">쪽번호 계산</text>
+<rect x="430" y="700" width="160" height="75" rx="6" fill="#664400" stroke="#d4a85a" stroke-width="1"/>
+<text x="510" y="725" font-size="11" font-weight="bold" fill="white" text-anchor="middle">쪽번호 자동</text>
+<text x="510" y="743" font-size="10" fill="#dddddd" text-anchor="middle">목차의</text>
+<text x="510" y="756" font-size="10" fill="#dddddd" text-anchor="middle">쪽번호 계산</text>
 
-<!-- Arrow -->
-<line x1="590" y1="732" x2="615" y2="732" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="590" y1="737" x2="615" y2="737" stroke="#666666" stroke-width="2"/>
+<polygon points="620,737 610,732 610,742" fill="#666666"/>
 
-<rect x="625" y="695" width="135" height="75" rx="6" fill="#664400" stroke="#d4a85a"/>
-<text x="692" y="720" class="box-title" style="font-size: 11px;">검사</text>
-<text x="692" y="738" class="box-text" style="font-size: 10px;">문서</text>
-<text x="692" y="751" class="box-text" style="font-size: 10px;">무결성 확인</text>
+<rect x="625" y="700" width="135" height="75" rx="6" fill="#664400" stroke="#d4a85a" stroke-width="1"/>
+<text x="692" y="725" font-size="11" font-weight="bold" fill="white" text-anchor="middle">검사</text>
+<text x="692" y="743" font-size="10" fill="#dddddd" text-anchor="middle">문서</text>
+<text x="692" y="756" font-size="10" fill="#dddddd" text-anchor="middle">무결성 확인</text>
 
-<!-- Arrow -->
-<line x1="400" y1="770" x2="400" y2="795" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="400" y1="775" x2="400" y2="800" stroke="#666666" stroke-width="2"/>
+<polygon points="400,805 395,795 405,795" fill="#666666"/>
 
 <!-- STEP 6 -->
-<text x="50" y="825" class="step-label">STEP 6. 완성된 보고서</text>
-<rect x="40" y="835" width="720" height="70" rx="8" fill="#1a3d0a" stroke="#5a9e3a"/>
-<text x="400" y="860" class="box-title">한글 문서 (.hwpx) 또는 메일 본문 (.md/.txt)</text>
-<text x="400" y="880" class="box-text">테이블·테두리·음영·페이지헤더 100% 그대로 → 바로 사용 가능!</text>
+<text x="50" y="830" font-size="12" font-weight="bold" fill="#aaaaaa">STEP 6. 완성된 보고서</text>
+<rect x="40" y="840" width="720" height="70" rx="8" fill="#1a3d0a" stroke="#5a9e3a" stroke-width="1"/>
+<text x="400" y="865" font-size="14" font-weight="bold" fill="white" text-anchor="middle">한글 문서 (.hwpx) 또는 메일 본문 (.md/.txt)</text>
+<text x="400" y="885" font-size="11" fill="#dddddd" text-anchor="middle">테이블·테두리·음영·페이지헤더 100% 그대로 - 바로 사용 가능!</text>
 
 <!-- Footer -->
-<text x="400" y="940" style="font-size: 11px; fill: #888888; text-anchor: middle; font-style: italic;">핵심: 빈 골격 + 당신의 콘텐츠 = 양식 디자인 100% 보존된 완벽한 보고서</text>
+<text x="400" y="945" font-size="11" fill="#888888" text-anchor="middle" font-style="italic">핵심: 빈 골격 + 당신의 콘텐츠 = 양식 디자인 100% 보존된 완벽한 보고서</text>
 
 </svg>
