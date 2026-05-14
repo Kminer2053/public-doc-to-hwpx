@@ -171,47 +171,57 @@ python3 scripts/compose_doc.py input.md output.hwpx \
 
 ---
 
-## 디렉토리 구조 (v3.4.0)
+## 디렉토리 구조 (v3.6.10)
 
 ```
 public-doc-to-hwpx/
-├── SKILL.md                                   # 6단계 워크플로우 (Claude Skill 진입점)
+├── SKILL.md                                   # 6단계 워크플로우 + Critical Rules 22개 (Claude Skill 진입점)
 ├── README.md                                  # 이 파일
 ├── LICENSE                                    # MIT
+├── CHANGES_v3.6.10.md                         # v3.6.x 누적 변경 요약
+├── PUSH_GUIDE.md                              # GitHub 푸시 워크플로우 안내
 │
-├── scripts/                                   ★ v3.4.0 — 공공기관 문서서식 유지 단일 빌드 워크플로우
-│   ├── fill_skeleton.py                       ★ 메인 빌더 — 양식 슬롯에 콘텐츠 값 삽입
+├── scripts/                                   ★ v3.6.10 — 공공기관 문서서식 유지 + 양식별 핫픽스 빌드
+│   │
+│   │  [핵심 빌더]
+│   ├── fill_skeleton.py                       메인 빌더 — 양식 슬롯에 콘텐츠 값 삽입
 │   ├── make_skeleton.py                       새 양식 등록 시 hwpx → 슬롯 토큰화 변환
+│   ├── build_full.py                          ★ v3.5.0 — 풀버전 통합 빌드 워크플로우 (4대 함정 검사)
 │   ├── fix_namespaces.py                      ⚠️ 필수 후처리 (빠뜨리면 한글에서 안 열림)
-│   ├── simulate_pages.py                      ★ v3.3.0 페이지 시뮬레이션 + 목차 페이지번호
-│   ├── ensure_body_anchor.py                  ★ v3.3.0 풀버전 본문 시작 pageBreak 강제
 │   ├── validate.py                            구조 검증
 │   │
-│   ├── [이전 버전] compose_doc.py             v3.0.1 4단계 파이프라인 (참고용)
-│   ├── [이전 버전] layout_optimizer.py        v3.0.1 글쓰기 최적화
-│   ├── [이전 버전] format_builders.py         v3.0.1 양식 빌더
-│   └── [이전 버전] build_hwpx.py              v3.0.1 HWPX 조립
+│   │  [페이지 처리]
+│   ├── simulate_pages.py                      ★ v3.5.0 — 페이지 시뮬레이션 + 목차 페이지번호
+│   ├── ensure_body_anchor.py                  풀버전 본문 시작 pageBreak="1" 강제
+│   │
+│   │  [v3.6.x 양식별 핫픽스]
+│   ├── wrap_long_titles.py                    ★ v3.6.0/3.6.4 — 표지·공문 제목 자간 압축 자동 해소
+│   ├── fix_toc_dots.py                        ★ v3.6.1/3.6.2/3.6.5 — 목차 점선 width 42000 통일 + 캐시 제거
+│   ├── fix_gongmun_body.py                    ★ v3.6.3 — 공문 본문 자간 압축 자동 해소
+│   ├── split_gongmun_paragraphs.py            ★ v3.6.4/3.6.6 — placeholder 강제 분리
+│   ├── fix_skeleton_defects.py                ★ v3.6.6/3.6.10 — Skeleton 양식 결함 자동 보정
+│   └── expand_gongmun_body.py                 ★ v3.6.7~3.6.10 — 공문 본문 위계 동적 확장
 │
 ├── templates/
-│   ├── _skeleton.hwpx                         ★ v3.4.0 폴백 베이스 (7.4KB, 한컴 표준 준수)
-│   ├── charpr_mapping.json                    ★ v3.4.0 양식별 charPr 역할 → id 매핑표
+│   ├── _skeleton.hwpx                         폴백 베이스 (한컴 표준 메타파일 준수)
+│   ├── charpr_mapping.json                    양식별 charPr 역할 → id 매핑표
 │   ├── government/header.xml                  관공서 charPr/paraPr/borderFill 정의
 │   │
 │   ├── format_1p/
 │   │   ├── standard.hwpx                      1p 보고서 표준 양식 (맑은 고딕, 35개 슬롯)
-│   │   ├── skeleton.hwpx                      ★ v3.4.0 슬롯 양식 (35개 슬롯)
-│   │   ├── skeleton_mapping.json              ★ v3.4.0 슬롯 ↔ 원본 텍스트 매핑
+│   │   ├── skeleton.hwpx                      슬롯 양식 (35개 슬롯)
+│   │   ├── skeleton_mapping.json              슬롯 ↔ 원본 텍스트 매핑
 │   │   └── outline_guide.md                   ★ v3.3.1 보고 목적별 11가지 표준 목차
 │   │
 │   ├── format_full/
-│   │   ├── standard.hwpx                      풀버전 보고서 표준 양식 (표 10개, 127개 슬롯)
-│   │   ├── skeleton.hwpx                      ★ v3.4.0 슬롯 양식 (127개 슬롯 + 페이지번호)
-│   │   └── skeleton_mapping.json              ★ v3.4.0 슬롯 ↔ 원본 텍스트 매핑
+│   │   ├── standard.hwpx                      풀버전 보고서 표준 양식 (맑은 고딕, 표 10개)
+│   │   ├── skeleton.hwpx                      슬롯 양식 (127개 슬롯 + 페이지번호)
+│   │   └── skeleton_mapping.json              슬롯 ↔ 원본 텍스트 매핑
 │   │
 │   ├── format_gongmun/
-│   │   ├── standard.hwpx                      시행문 표준 양식 (27개 슬롯)
-│   │   ├── skeleton.hwpx                      ★ v3.4.0 슬롯 양식 (27개 슬롯)
-│   │   └── skeleton_mapping.json              ★ v3.4.0 슬롯 ↔ 원본 텍스트 매핑
+│   │   ├── standard.hwpx                      시행문 표준 양식 (굴림체, 표 셀 66개)
+│   │   ├── skeleton.hwpx                      슬롯 양식 (27개 슬롯 — fwSpace 포함)
+│   │   └── skeleton_mapping.json              슬롯 ↔ 원본 텍스트 매핑
 │   │
 │   └── format_email/                          (이메일은 텍스트만, 양식 불필요)
 │
@@ -223,6 +233,10 @@ public-doc-to-hwpx/
 │   ├── format-full.md                         풀버전 보고서 가이드
 │   ├── format-gongmun.md                      시행문 가이드
 │   └── format-email.md                        이메일 가이드
+│
+├── examples/                                  ★ v3.6.10 — 예시 values.json
+│   ├── example_values_gongmun.json            시행문 예시 (모든 7개 위계 활용)
+│   └── example_values_full.json               풀버전 보고서 예시 (127슬롯)
 │
 └── assets/
     └── public_doc_to_hwpx_skill_pipeline.svg  작동 구조 설명 다이어그램
