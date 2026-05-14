@@ -1,770 +1,970 @@
 {
-  "_comment": "빈 골격 hwpx 의 placeholder 토큰 ↔ 원본 텍스트 매핑. fill_skeleton.py 로 채울 때 token 키에 값을 넣은 JSON 을 전달하면 됨.",
-  "source_hwpx": "standard.hwpx",
-  "skeleton_hwpx": "skeleton.hwpx",
-  "total_slots": 127,
-  "slots": [
-    {
-      "token": "문서번호",
-      "original_text": "-@N",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "보존기간",
-      "original_text": "1년",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "text_001",
-      "original_text": "- 부제목 맑은고딕 14pt -",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "text_002",
-      "original_text": "주제목 HY헤드라인M 28pt",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "보고일",
-      "original_text": "2026. 5. 11",
-      "page": 1,
-      "in_table": false
-    },
-    {
-      "token": "기관명",
-      "original_text": "기관명 HY헤드라인 24pt",
-      "page": 1,
-      "in_table": false
-    },
-    {
-      "token": "본부부서명",
-      "original_text": "본부명 부서명 HY헤드라인 20pt",
-      "page": 1,
-      "in_table": false
-    },
-    {
-      "token": "목차_항목_001",
-      "original_text": "Ⅰ. 사업 개요 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_002",
-      "original_text": " 1",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_003",
-      "original_text": "Ⅱ. 요구 사항 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_004",
-      "original_text": " 3",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_005",
-      "original_text": "  1. 일반사항 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_006",
-      "original_text": " 3",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_007",
-      "original_text": "  2. 2026~2028 회계연도에 대한 회계감사 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_008",
-      "original_text": " 3",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_009",
-      "original_text": "  3. 정부경영평가 관련 실적확인 및 확인서 발급 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_010",
-      "original_text": " 3",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_011",
-      "original_text": "  4. 기타 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_012",
-      "original_text": " 4",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_013",
-      "original_text": "Ⅲ. 계약 사항",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_014",
-      "original_text": " 5",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_015",
-      "original_text": "  1. 일반사항 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_016",
-      "original_text": " 5",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_017",
-      "original_text": "  2. 계약 체결 절차 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_018",
-      "original_text": " 5",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_019",
-      "original_text": "  3. 기타 유의사항 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_020",
-      "original_text": " 6",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_021",
-      "original_text": " Ⅳ. 평가요소 및 방법",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_022",
-      "original_text": " 7",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_023",
-      "original_text": "  1. 평가요소 및 배점",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_024",
-      "original_text": " 7",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_025",
-      "original_text": "  2. 정량평가 세부평가 기준 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_026",
-      "original_text": " 8",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_027",
-      "original_text": "  3. 평가 방법 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_028",
-      "original_text": " 9",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_029",
-      "original_text": "  4. 제안서 평가(PT 발표) ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_030",
-      "original_text": " 9",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_031",
-      "original_text": "  5. 기타 유의사항 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_032",
-      "original_text": " 10",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_033",
-      "original_text": "Ⅴ. 제안서 규격 및 제출요령",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_034",
-      "original_text": " 11",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_035",
-      "original_text": "  1. 제안서 작성방법 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_036",
-      "original_text": " 11",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_037",
-      "original_text": "  2. 제안서 구성 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_038",
-      "original_text": " 12",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_039",
-      "original_text": "  3. 제안서 제출요령",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_040",
-      "original_text": " 13",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_041",
-      "original_text": "  4. 기타 유의사항",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_042",
-      "original_text": " 13",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_043",
-      "original_text": "Ⅵ. 보안관리",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_044",
-      "original_text": " 14",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_045",
-      "original_text": "  1. 참여인원 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_046",
-      "original_text": " 14",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_047",
-      "original_text": "  2. 자료 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_048",
-      "original_text": " 15",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_049",
-      "original_text": "  3. 사무실·장비 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_050",
-      "original_text": " 15",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_051",
-      "original_text": "  4. 사업 완료 후 보안관리 ",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "목차_항목_052",
-      "original_text": " 16",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "참고자료_1",
-      "original_text": " 1. 참고자료1 HY헤드라인 13pt",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "참고자료_2",
-      "original_text": " 2. 참고자료2 HY헤드라인 13pt",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "참고자료_3",
-      "original_text": " 3. 참고자료3 HY헤드라인 13pt",
-      "page": 1,
-      "in_table": true
-    },
-    {
-      "token": "장01_제목",
-      "original_text": " 사업개요",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "본문_절_001",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_001",
-      "original_text": " 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_001",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_001",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "장02_제목",
-      "original_text": " 요구사항",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "본문_절_002",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_002",
-      "original_text": " 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_002",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_002",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_절_003",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_003",
-      "original_text": " 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_003",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_003",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "장03_제목",
-      "original_text": " 계약사항",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "본문_절_004",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_004",
-      "original_text": " 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_004",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_004",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_절_005",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_005",
-      "original_text": " 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_005",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_005",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "장04_제목",
-      "original_text": " 평가요소 및 방법",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "본문_절_006",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_006",
-      "original_text": " 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_006",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_006",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_절_007",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_007",
-      "original_text": " 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_007",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_007",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "장05_제목",
-      "original_text": " 제안서 규격 및 제출요령",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "본문_절_008",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_008",
-      "original_text": " 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_008",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_008",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_절_009",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_009",
-      "original_text": " 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_009",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_009",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_절_010",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_010",
-      "original_text": "  ◦ 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "일정표_셀_001",
-      "original_text": "맑은 고딕_12 POINT",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_002",
-      "original_text": "맑은 고딕_12",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_003",
-      "original_text": "맑은 고딕_12 POINT",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_004",
-      "original_text": "맑은 고딕_12 POINT",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_005",
-      "original_text": "맑은 고딕_12",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_006",
-      "original_text": "맑은 고딕_12 POINT",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_007",
-      "original_text": "맑은 고딕_12 POINT",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_008",
-      "original_text": "맑은 고딕_12",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_009",
-      "original_text": "맑은 고딕_12 POINT",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_010",
-      "original_text": "맑은 고딕_12 POINT",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_011",
-      "original_text": "맑은 고딕_12",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "일정표_셀_012",
-      "original_text": "맑은 고딕_12 POINT",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "본문_주석_010",
-      "original_text": "  ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "장06_제목",
-      "original_text": " 보안관리",
-      "page": 2,
-      "in_table": true
-    },
-    {
-      "token": "본문_절_011",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_011",
-      "original_text": "  ◦ 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_010",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_011",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_절_012",
-      "original_text": " □ 헤드라인M 폰트_15 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_항목_012",
-      "original_text": "  ◦ 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_세부_011",
-      "original_text": "   - 휴먼명조 폰트_14 POINT",
-      "page": 2,
-      "in_table": false
-    },
-    {
-      "token": "본문_주석_012",
-      "original_text": "       ※ 맑은 고딕_11 POINT ",
-      "page": 2,
-      "in_table": false
-    }
-  ]
+    "_comment": "빈 골격 hwpx 의 placeholder 토큰 ↔ 원본 텍스트 매핑. fill_skeleton.py 로 채울 때 token 키에 값을 넣은 JSON 을 전달하면 됨.",
+    "source_hwpx": "standard.hwpx",
+    "skeleton_hwpx": "skeleton.hwpx",
+    "total_slots": 127,
+    "slots": [
+        {
+            "token": "문서번호",
+            "original_text": "-@N",
+            "page": 1,
+            "in_table": true
+        },
+        {
+            "token": "보존기간",
+            "original_text": "1년",
+            "page": 1,
+            "in_table": true
+        },
+        {
+            "token": "text_001",
+            "original_text": "- 부제목 맑은고딕 14pt -",
+            "page": 1,
+            "in_table": true
+        },
+        {
+            "token": "text_002",
+            "original_text": "주제목 HY헤드라인M 28pt",
+            "page": 1,
+            "in_table": true
+        },
+        {
+            "token": "보고일",
+            "original_text": "2026. 5. 11",
+            "page": 1,
+            "in_table": false
+        },
+        {
+            "token": "기관명",
+            "original_text": "기관명 HY헤드라인 24pt",
+            "page": 1,
+            "in_table": false
+        },
+        {
+            "token": "본부부서명",
+            "original_text": "본부명 부서명 HY헤드라인 20pt",
+            "page": 1,
+            "in_table": false
+        },
+        {
+            "token": "목차_항목_001",
+            "original_text": "Ⅰ. 사업 개요 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "chapter",
+            "hint": "대제목 슬롯. Ⅰ~Ⅹ 형태로 매핑하세요."
+        },
+        {
+            "token": "목차_항목_002",
+            "original_text": " 1",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_003",
+            "original_text": "Ⅱ. 요구 사항 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "chapter",
+            "hint": "대제목 슬롯. Ⅰ~Ⅹ 형태로 매핑하세요."
+        },
+        {
+            "token": "목차_항목_004",
+            "original_text": " 3",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_005",
+            "original_text": "  1. 일반사항 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_006",
+            "original_text": " 3",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_007",
+            "original_text": "  2. 2026~2028 회계연도에 대한 회계감사 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_008",
+            "original_text": " 3",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_009",
+            "original_text": "  3. 정부경영평가 관련 실적확인 및 확인서 발급 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_010",
+            "original_text": " 3",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_011",
+            "original_text": "  4. 기타 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_012",
+            "original_text": " 4",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_013",
+            "original_text": "Ⅲ. 계약 사항",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "chapter",
+            "hint": "대제목 슬롯. Ⅰ~Ⅹ 형태로 매핑하세요."
+        },
+        {
+            "token": "목차_항목_014",
+            "original_text": " 5",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_015",
+            "original_text": "  1. 일반사항 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_016",
+            "original_text": " 5",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_017",
+            "original_text": "  2. 계약 체결 절차 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_018",
+            "original_text": " 5",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_019",
+            "original_text": "  3. 기타 유의사항 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_020",
+            "original_text": " 6",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_021",
+            "original_text": " Ⅳ. 평가요소 및 방법",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "chapter",
+            "hint": "대제목 슬롯. Ⅰ~Ⅹ 형태로 매핑하세요."
+        },
+        {
+            "token": "목차_항목_022",
+            "original_text": " 7",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_023",
+            "original_text": "  1. 평가요소 및 배점",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_024",
+            "original_text": " 7",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_025",
+            "original_text": "  2. 정량평가 세부평가 기준 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_026",
+            "original_text": " 8",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_027",
+            "original_text": "  3. 평가 방법 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_028",
+            "original_text": " 9",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_029",
+            "original_text": "  4. 제안서 평가(PT 발표) ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_030",
+            "original_text": " 9",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_031",
+            "original_text": "  5. 기타 유의사항 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_032",
+            "original_text": " 10",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_033",
+            "original_text": "Ⅴ. 제안서 규격 및 제출요령",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "chapter",
+            "hint": "대제목 슬롯. Ⅰ~Ⅹ 형태로 매핑하세요."
+        },
+        {
+            "token": "목차_항목_034",
+            "original_text": " 11",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_035",
+            "original_text": "  1. 제안서 작성방법 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_036",
+            "original_text": " 11",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_037",
+            "original_text": "  2. 제안서 구성 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_038",
+            "original_text": " 12",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_039",
+            "original_text": "  3. 제안서 제출요령",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_040",
+            "original_text": " 13",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_041",
+            "original_text": "  4. 기타 유의사항",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_042",
+            "original_text": " 13",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_043",
+            "original_text": "Ⅵ. 보안관리",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "chapter",
+            "hint": "대제목 슬롯. Ⅰ~Ⅹ 형태로 매핑하세요."
+        },
+        {
+            "token": "목차_항목_044",
+            "original_text": " 14",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_045",
+            "original_text": "  1. 참여인원 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_046",
+            "original_text": " 14",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_047",
+            "original_text": "  2. 자료 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_048",
+            "original_text": " 15",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_049",
+            "original_text": "  3. 사무실·장비 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_050",
+            "original_text": " 15",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "목차_항목_051",
+            "original_text": "  4. 사업 완료 후 보안관리 ",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "subsection",
+            "hint": "소제목 슬롯. '  1. 항목명' 형태로 매핑하세요(들여쓰기 2칸)."
+        },
+        {
+            "token": "목차_항목_052",
+            "original_text": " 16",
+            "page": 1,
+            "in_table": true,
+            "hierarchy": "page_number",
+            "hint": "페이지번호 슬롯. simulate_pages.py 가 자동 매핑."
+        },
+        {
+            "token": "참고자료_1",
+            "original_text": " 1. 참고자료1 HY헤드라인 13pt",
+            "page": 1,
+            "in_table": true
+        },
+        {
+            "token": "참고자료_2",
+            "original_text": " 2. 참고자료2 HY헤드라인 13pt",
+            "page": 1,
+            "in_table": true
+        },
+        {
+            "token": "참고자료_3",
+            "original_text": " 3. 참고자료3 HY헤드라인 13pt",
+            "page": 1,
+            "in_table": true
+        },
+        {
+            "token": "장01_제목",
+            "original_text": " 사업개요",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "본문_절_001",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_001",
+            "original_text": " 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "auto",
+            "hint": "paraPr 자동 ○ 마커 슬롯. 콘텐츠에 ◦ 직접 표기 금지 — 텍스트만 입력하세요."
+        },
+        {
+            "token": "본문_세부_001",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_001",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "장02_제목",
+            "original_text": " 요구사항",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "본문_절_002",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_002",
+            "original_text": " 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "auto",
+            "hint": "paraPr 자동 ○ 마커 슬롯. 콘텐츠에 ◦ 직접 표기 금지 — 텍스트만 입력하세요."
+        },
+        {
+            "token": "본문_세부_002",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_002",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "본문_절_003",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_003",
+            "original_text": " 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "auto",
+            "hint": "paraPr 자동 ○ 마커 슬롯. 콘텐츠에 ◦ 직접 표기 금지 — 텍스트만 입력하세요."
+        },
+        {
+            "token": "본문_세부_003",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_003",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "장03_제목",
+            "original_text": " 계약사항",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "본문_절_004",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_004",
+            "original_text": " 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "auto",
+            "hint": "paraPr 자동 ○ 마커 슬롯. 콘텐츠에 ◦ 직접 표기 금지 — 텍스트만 입력하세요."
+        },
+        {
+            "token": "본문_세부_004",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_004",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "본문_절_005",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_005",
+            "original_text": " 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "auto",
+            "hint": "paraPr 자동 ○ 마커 슬롯. 콘텐츠에 ◦ 직접 표기 금지 — 텍스트만 입력하세요."
+        },
+        {
+            "token": "본문_세부_005",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_005",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "장04_제목",
+            "original_text": " 평가요소 및 방법",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "본문_절_006",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_006",
+            "original_text": " 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "auto",
+            "hint": "paraPr 자동 ○ 마커 슬롯. 콘텐츠에 ◦ 직접 표기 금지 — 텍스트만 입력하세요."
+        },
+        {
+            "token": "본문_세부_006",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_006",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "본문_절_007",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_007",
+            "original_text": " 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "auto",
+            "hint": "paraPr 자동 ○ 마커 슬롯. 콘텐츠에 ◦ 직접 표기 금지 — 텍스트만 입력하세요."
+        },
+        {
+            "token": "본문_세부_007",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_007",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "장05_제목",
+            "original_text": " 제안서 규격 및 제출요령",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "본문_절_008",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_008",
+            "original_text": " 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "auto",
+            "hint": "paraPr 자동 ○ 마커 슬롯. 콘텐츠에 ◦ 직접 표기 금지 — 텍스트만 입력하세요."
+        },
+        {
+            "token": "본문_세부_008",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_008",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "본문_절_009",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_009",
+            "original_text": " 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "auto",
+            "hint": "paraPr 자동 ○ 마커 슬롯. 콘텐츠에 ◦ 직접 표기 금지 — 텍스트만 입력하세요."
+        },
+        {
+            "token": "본문_세부_009",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_009",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "본문_절_010",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_010",
+            "original_text": "  ◦ 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "양식 원본에 ◦ 마커가 있는 슬롯. 콘텐츠에도 '  ◦ 항목명' 으로 직접 표기하세요."
+        },
+        {
+            "token": "일정표_셀_001",
+            "original_text": "맑은 고딕_12 POINT",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_002",
+            "original_text": "맑은 고딕_12",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_003",
+            "original_text": "맑은 고딕_12 POINT",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_004",
+            "original_text": "맑은 고딕_12 POINT",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_005",
+            "original_text": "맑은 고딕_12",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_006",
+            "original_text": "맑은 고딕_12 POINT",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_007",
+            "original_text": "맑은 고딕_12 POINT",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_008",
+            "original_text": "맑은 고딕_12",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_009",
+            "original_text": "맑은 고딕_12 POINT",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_010",
+            "original_text": "맑은 고딕_12 POINT",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_011",
+            "original_text": "맑은 고딕_12",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "일정표_셀_012",
+            "original_text": "맑은 고딕_12 POINT",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "본문_주석_010",
+            "original_text": "  ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "장06_제목",
+            "original_text": " 보안관리",
+            "page": 2,
+            "in_table": true
+        },
+        {
+            "token": "본문_절_011",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_011",
+            "original_text": "  ◦ 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "양식 원본에 ◦ 마커가 있는 슬롯. 콘텐츠에도 '  ◦ 항목명' 으로 직접 표기하세요."
+        },
+        {
+            "token": "본문_세부_010",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_011",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        },
+        {
+            "token": "본문_절_012",
+            "original_text": " □ 헤드라인M 폰트_15 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "□ 마커 직접 표기. ' □ 절 제목' 형태로 입력하세요."
+        },
+        {
+            "token": "본문_항목_012",
+            "original_text": "  ◦ 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "양식 원본에 ◦ 마커가 있는 슬롯. 콘텐츠에도 '  ◦ 항목명' 으로 직접 표기하세요."
+        },
+        {
+            "token": "본문_세부_011",
+            "original_text": "   - 휴먼명조 폰트_14 POINT",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "- 마커 직접 표기. '   - 세부 항목' 형태(들여쓰기 3칸)."
+        },
+        {
+            "token": "본문_주석_012",
+            "original_text": "       ※ 맑은 고딕_11 POINT ",
+            "page": 2,
+            "in_table": false,
+            "marker_type": "direct",
+            "hint": "※ 마커 직접 표기. '       ※ 주석' 형태(들여쓰기 7칸)."
+        }
+    ],
+    "_meta_version": "3.5.0",
+    "_meta_notes": "v3.5.0: 슬롯별 hierarchy(대제목/소제목/페이지번호) 와 marker_type(auto/direct) 메타 추가. build_full.py 가 이 정보를 활용하여 입력 검사 수행."
 }

@@ -254,6 +254,12 @@ def main():
         sys.exit(1)
     if not run_script("ensure_body_anchor.py", str(output_path)):
         sys.exit(1)
+    # v3.6.0: 표지 큰 제목이 셀 너비 초과 시 한글2018에서 자간 압축으로 깨지는 문제 방지
+    if not run_script("wrap_long_titles.py", str(output_path), "--format", "full"):
+        sys.exit(1)
+    # v3.6.1: 목차 점선 tab width 통일 (한글2018 폰트 보유 시 점선/페이지번호 깨짐 방지)
+    if not run_script("fix_toc_dots.py", str(output_path)):
+        sys.exit(1)
     if not run_script("validate.py", str(output_path)):
         sys.exit(1)
 

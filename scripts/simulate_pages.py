@@ -173,7 +173,8 @@ def make_values_for_toc_pages(skeleton_mapping_path: str,
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="페이지 시뮬레이션 + 목차 페이지번호 자동 매핑 (v3.5.0 핫픽스)")
     parser.add_argument("hwpx")
     parser.add_argument("--cover-pages", type=int, default=COVER_PAGES_DEFAULT)
     parser.add_argument("--items-per-toc", type=int,
@@ -182,6 +183,15 @@ if __name__ == "__main__":
                         default=SECTIONS_PER_BODY_PAGE_DEFAULT)
     parser.add_argument("--mapping",
                         help="skeleton_mapping.json (제공 시 값매핑 자동 생성)")
+    parser.add_argument("--values",
+                        help="사용자 values.json (chapter 인식 정확도 향상). "
+                             "원본 양식 텍스트가 아닌 사용자 매핑값 기준으로 "
+                             "Ⅰ~Ⅹ 장 번호를 식별함.")
+    parser.add_argument("--apply-to-values",
+                        action="store_true",
+                        help="--values 와 함께 사용. 시뮬레이션 결과 페이지번호를 "
+                             "values.json 에 직접 병합·저장하여 재빌드 가능 상태로 "
+                             "만듬.")
     args = parser.parse_args()
 
     sim = simulate_pages(
@@ -203,8 +213,22 @@ if __name__ == "__main__":
 
     if args.mapping:
         print(f"\n===== 자동 생성된 목차 페이지번호 매핑 =====")
-        values = make_values_for_toc_pages(args.mapping, sim)
+        # v3.5.0 핫픽스: values_path 도 함께 전달하여 사용자 매핑 기반 chapter 인식
+        values = make_values_for_toc_pages(args.mapping, sim,
+                                           values_path=args.values)
         for token, page in sorted(values.items(),
                                   key=lambda x: int(re.search(r'\d+',
                                                               x[0]).group())):
             print(f"  {token}: {page}")
+
+        # v3.5.0 핫픽스: values.json 에 페이지번호 직접 병합
+        if args.apply_to_values and args.values:
+            user_values = json.loads(
+                Path(args.values).read_text(encoding="utf-8"))
+            user_values.update(values)
+            Path(args.values).write_text(
+                json.dumps(user_values, ensure_ascii=False, indent=2),
+                encoding="utf-8")
+            print(f"\n✅ {args.values} 에 페이지번호 {len(values)}개 병합 완료")
+        elif args.apply_to_values and not args.values:
+            print("\n⚠️  --apply-to-values 는 --values 와 함께 사용해야 합니다.")
