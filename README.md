@@ -171,17 +171,18 @@ python3 scripts/compose_doc.py input.md output.hwpx \
 
 ---
 
-## 디렉토리 구조 (v3.6.10)
+## 디렉토리 구조 (v3.6.11)
 
 ```
 public-doc-to-hwpx/
-├── SKILL.md                                   # 6단계 워크플로우 + Critical Rules 22개 (Claude Skill 진입점)
+├── SKILL.md                                   # 6단계 워크플로우 + Critical Rules 23개 (Claude Skill 진입점)
 ├── README.md                                  # 이 파일
 ├── LICENSE                                    # MIT
-├── CHANGES_v3.6.10.md                         # v3.6.x 누적 변경 요약
+├── CHANGES.md                                 ★ v3.6.11 — 사용자용 누적 변경 요약 (통합본)
+├── RELEASE_CHECKLIST.md                       ★ v3.6.11 — 버전 업데이트 시 갱신 파일 체크리스트
 ├── PUSH_GUIDE.md                              # GitHub 푸시 워크플로우 안내
 │
-├── scripts/                                   ★ v3.6.10 — 공공기관 문서서식 유지 + 양식별 핫픽스 빌드
+├── scripts/                                   ★ v3.6.11 — 공공기관 문서서식 유지 + 양식별 핫픽스 빌드
 │   │
 │   │  [핵심 빌더]
 │   ├── fill_skeleton.py                       메인 빌더 — 양식 슬롯에 콘텐츠 값 삽입
@@ -200,7 +201,8 @@ public-doc-to-hwpx/
 │   ├── fix_gongmun_body.py                    ★ v3.6.3 — 공문 본문 자간 압축 자동 해소
 │   ├── split_gongmun_paragraphs.py            ★ v3.6.4/3.6.6 — placeholder 강제 분리
 │   ├── fix_skeleton_defects.py                ★ v3.6.6/3.6.10 — Skeleton 양식 결함 자동 보정
-│   └── expand_gongmun_body.py                 ★ v3.6.7~3.6.10 — 공문 본문 위계 동적 확장
+│   ├── expand_gongmun_body.py                 ★ v3.6.7~3.6.10 — 공문 본문 위계 동적 확장
+│   └── normalize_1p_markers.py                ★ v3.6.11 — 1p 보고서 마커(◦/-/*) 자동 정규화
 │
 ├── templates/
 │   ├── _skeleton.hwpx                         폴백 베이스 (한컴 표준 메타파일 준수)
@@ -234,7 +236,8 @@ public-doc-to-hwpx/
 │   ├── format-gongmun.md                      시행문 가이드
 │   └── format-email.md                        이메일 가이드
 │
-├── examples/                                  ★ v3.6.10 — 예시 values.json
+├── examples/                                  예시 values.json
+│   ├── example_values_1p.json                 ★ v3.6.11 — 1페이지 보고서 예시 (마커 입력 자유)
 │   ├── example_values_gongmun.json            시행문 예시 (모든 7개 위계 활용)
 │   └── example_values_full.json               풀버전 보고서 예시 (127슬롯)
 │
@@ -438,6 +441,7 @@ globs: ["*.hwpx", "*.md", "*.docx"]
 | 2026-05-07 | 3.3.1 | 풀버전 목차 표준화 (outline_guide.md, 11가지 보고 유형) |
 | 2026-05-13 | **3.4.0** | **공공기관 문서서식 유지 방식 통합** — 6단계 파이프라인으로 전환, 양식 슬롯 매핑 도입, templates 구조 재정리, 내장 표준 양식 추가 |
 | 2026-05-13 | **3.5.0** | **풀버전 4대 함정 자동 검사** — build_full.py 신규 (위계 위반·빈 슬롯·마커 중복·페이지번호 미반영 해결), simulate_pages --values 인자 추가 |
+| 2026-05-13 | **3.6.0~3.6.11** | **양식별 핫픽스 누적 보정** — 표지·공문 제목 자간 압축 해소, 목차 점선 통일, 공문 본문 위계 동적 확장, Skeleton 양식 결함 자동 보정, 1p 보고서 마커 자동 정규화 등 (상세: [CHANGES.md](CHANGES.md)) |
 | 2026-05-13 | **3.6.10** | **공문 양식 빌더 완성 (v3.6.0~v3.6.10 누적)** — 표지·공문 제목 자간 압축 자동 해소(wrap_long_titles.py), 목차 점선 깨짐 자동 보정(fix_toc_dots.py), 공문 본문 모든 위계 동적 확장(expand_gongmun_body.py), Skeleton 결함 자동 보정(fix_skeleton_defects.py) 등 다수 핫픽스 |
 
 ---

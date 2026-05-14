@@ -28,6 +28,7 @@ from pathlib import Path
 # v3.6.4: 공문 placeholder 단락 자동 분리 (v3.6.6 에서 SPLIT_PAIRS 빈 상태로 변경)
 # v3.6.6: skeleton 결함 보정 (Ⅳ장 들여쓰기 누락 등)
 # v3.6.7/3.6.8: 공문 본문 단락 동적 확장 (모든 위계) + 빈 placeholder 단락 자동 제거
+# v3.6.11: 1p 양식 마커 자동 정규화
 try:
     from split_gongmun_paragraphs import split_combined_placeholders
     from fix_skeleton_defects import apply_skeleton_fixes
@@ -36,6 +37,7 @@ try:
         EMPTY_MARKER,
         remove_empty_marker_paragraphs,
     )
+    from normalize_1p_markers import normalize_1p_values
 except ImportError:
     sys.path.insert(0, str(Path(__file__).parent))
     from split_gongmun_paragraphs import split_combined_placeholders
@@ -45,6 +47,7 @@ except ImportError:
         EMPTY_MARKER,
         remove_empty_marker_paragraphs,
     )
+    from normalize_1p_markers import normalize_1p_values
 
 
 def xml_escape(text: str) -> str:
@@ -59,14 +62,22 @@ def fill_skeleton(skeleton_path: Path, values: dict, output_path: Path,
                   split_paragraphs: bool = True,
                   fix_defects: bool = True,
                   expand_body: bool = True,
-                  remove_empty: bool = True) -> dict:
+                  remove_empty: bool = True,
+                  normalize_markers: bool = True) -> dict:
     """빈 골격의 placeholder를 values 딕셔너리로 채움.
 
     v3.6.8: remove_empty=True (기본) 시 빈 값(values 누락 또는 빈 문자열) 인
-    placeholder 가 속한 hp:p 단락을 출력에서 자동 제거. 한글에서 빈 줄로
-    안 보임. 다른 의미 있는 텍스트가 같은 hp:p 에 있으면 마커만 제거하고
-    단락은 보존.
+    placeholder 가 속한 hp:p 단락을 출력에서 자동 제거.
+    v3.6.11: 1p 양식 빌드 시 normalize_markers=True (기본) 로 마커 자동 정규화
+    (◦ 자동 추가 / BULLET 자동 마커 위계의 사용자 '-' 입력 제거).
     """
+    # v3.6.11: 1p 양식 인식 및 마커 자동 정규화
+    is_one_pager = "format_1p" in str(skeleton_path)
+    marker_summary = {"applied": False}
+    if is_one_pager and normalize_markers:
+        values, marker_summary = normalize_1p_values(values)
+        marker_summary["applied"] = True
+
     workdir = Path("/tmp/fill_work")
     if workdir.exists():
         shutil.rmtree(workdir)
@@ -168,6 +179,7 @@ def fill_skeleton(skeleton_path: Path, values: dict, output_path: Path,
         "defect_fixes": defects_summary,     # v3.6.6
         "body_expansion": body_summary,      # v3.6.7
         "empty_handling": empty_summary,     # v3.6.8
+        "marker_normalization": marker_summary,  # v3.6.11
     }
 
 
@@ -179,11 +191,13 @@ if __name__ == "__main__":
     parser.add_argument("--no-split-paragraphs", action="store_true",
                         help="공문 placeholder 단락 분리 비활성화")
     parser.add_argument("--no-fix-defects", action="store_true",
-                        help="skeleton 결함 보정 비활성화 (Ⅳ장 들여쓰기 등)")
+                        help="skeleton 결함 보정 비활성화")
     parser.add_argument("--no-expand-body", action="store_true",
-                        help="공문 본문 동적 확장 비활성화 ('본문' 배열 처리)")
+                        help="공문 본문 동적 확장 비활성화")
     parser.add_argument("--no-remove-empty", action="store_true",
                         help="빈 placeholder 단락 자동 제거 비활성화")
+    parser.add_argument("--no-normalize-markers", action="store_true",
+                        help="1p 양식 마커 자동 정규화 비활성화")
     args = parser.parse_args()
 
     values = json.loads(Path(args.values).read_text(encoding="utf-8"))
@@ -195,5 +209,6 @@ if __name__ == "__main__":
         fix_defects=not args.no_fix_defects,
         expand_body=not args.no_expand_body,
         remove_empty=not args.no_remove_empty,
+        normalize_markers=not args.no_normalize_markers,
     )
     print(json.dumps(result, ensure_ascii=False, indent=2))
