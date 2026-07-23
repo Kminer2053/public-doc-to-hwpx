@@ -216,13 +216,17 @@ A4 1쪽, 여백 상25·하20·좌25·우25mm 기준 **실효 상한 약 37줄**.
 
 1. **값 정리** — 부제·제목·작성자·요약박스·□/○/- 항목을 `skeleton_mapping.json` 슬롯에 매핑한 `values.json` 작성
    (예시: [`examples/example_values_1p.json`](../examples/example_values_1p.json))
-2. **마커 정규화** — `fill_skeleton.py` 가 1p 양식 자동 감지 시 `normalize_1p_markers.py` 로 `◦/-/*` 마커 자동 보정
-3. **빌드** — `python3 scripts/fill_skeleton.py --format format_1p --values values.json --output out.hwpx`
-4. **필수 후처리** — `python3 scripts/fix_namespaces.py out.hwpx`
-5. **검증** — `python3 scripts/validate.py out.hwpx`
+2. **마커 정규화** — `fill_skeleton.py` 가 1p 양식(`--skeleton` 경로에 `format_1p` 포함) 자동 감지 시
+   `normalize_1p_markers.py` 로 `◦/-/*` 마커 자동 보정 (빌드에 통합, 별도 호출 불필요)
+3. **빌드** — `fill_skeleton.py` 에 `--skeleton templates/format_1p/skeleton.hwpx` 지정
+4. **필수 후처리** — `fix_namespaces.py`
+5. **검증** — `validate.py`
 
 ```bash
-python3 scripts/fill_skeleton.py --format format_1p --values values.json --output out.hwpx
+python3 scripts/fill_skeleton.py \
+  --skeleton templates/format_1p/skeleton.hwpx \
+  --values values.json \
+  --output out.hwpx
 python3 scripts/fix_namespaces.py out.hwpx
 python3 scripts/validate.py out.hwpx
 ```

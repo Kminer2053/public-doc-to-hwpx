@@ -199,16 +199,18 @@
    - `본문`(1./2./…), `본문_가나`(가./나./…), `본문_1)`, `본문_①` 등 위계별 배열로 입력하면
      항목 수에 따라 단락이 **자동 확장**되고, 빈 배열은 해당 위계 단락이 출력에서 사라짐
    - `수신자` 키만 넣으면 "수신" 라벨은 자동 부여
-2. **빌드** — `python3 scripts/fill_skeleton.py --format format_gongmun --values values.json --output out.hwpx`
-3. **본문 위계 동적 확장** — `python3 scripts/expand_gongmun_body.py out.hwpx`
-4. **자간 압축 해소** — `python3 scripts/fix_gongmun_body.py out.hwpx` · `python3 scripts/wrap_long_titles.py out.hwpx`
-5. **필수 후처리 + 검증** — `python3 scripts/fix_namespaces.py out.hwpx` → `python3 scripts/validate.py out.hwpx`
+2. **빌드** — `fill_skeleton.py` 에 `--skeleton templates/format_gongmun/skeleton.hwpx` 지정
+   - 본문 위계 **동적 확장**(`expand_gongmun_body.py`)·수신자 슬롯 보정(`fix_skeleton_defects.py`)은
+     `fill_skeleton.py` 에 **통합**되어 자동 실행됨 (끄려면 `--no-expand-body` 등 플래그)
+3. **본문 자간 압축 해소** — `fix_gongmun_body.py` (공문 본문 단일 lineseg 제거)
+4. **필수 후처리 + 검증** — `fix_namespaces.py` → `validate.py`
 
 ```bash
-python3 scripts/fill_skeleton.py --format format_gongmun --values values.json --output out.hwpx
-python3 scripts/expand_gongmun_body.py out.hwpx
+python3 scripts/fill_skeleton.py \
+  --skeleton templates/format_gongmun/skeleton.hwpx \
+  --values values.json \
+  --output out.hwpx
 python3 scripts/fix_gongmun_body.py out.hwpx
-python3 scripts/wrap_long_titles.py out.hwpx
 python3 scripts/fix_namespaces.py out.hwpx
 python3 scripts/validate.py out.hwpx
 ```
