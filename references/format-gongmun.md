@@ -188,59 +188,29 @@
 
 ---
 
-## 9. 빌드 시 hwpx_helpers.py 호출 패턴
+## 9. 빌드 워크플로우 (v3.4.0+ 문서서식 유지 방식)
 
-```python
-parts.extend(make_gongmun_header(
-    sender='○○주식회사 ○○○처',
-    receiver='각 부서장',
-    via='',  # (경유) 비어 있으면 생략
-    title='2025년 하반기 매장 운영실적 보고 요청'
-))
+> ⚠️ v3.3.x 까지의 `hwpx_helpers.py` 단락 빌더는 v3.4.0 에서 제거되었습니다.
+> 현재 시행문은 **표준 양식 슬롯에 값만 채우는 방식**으로 빌드합니다.
+> 수신·제목·본문·발신명의·하단 메타의 표 구조와 서식은 빌드 중 100% 보존됩니다.
 
-parts.append(make_gongmun_body(
-    related_clause='2025년 매장 운영 평가 추진 계획(AI혁신처-1234, 2025.10.15.)',
-    main_paragraph=(
-        '위 호와 관련하여 매장별 운영실적 보고를 다음과 같이 '
-        '요청하오니 적극 협조하여 주시기 바랍니다.'
-    ),
-    items=[
-        '가. 보고 대상: 본사 직영 및 위탁 매장 전체',
-        '나. 제출 항목',
-        '  1) 매출 실적 (월별, 분기별)',
-        '  2) 인력 운영 현황',
-        '  3) 주요 이슈 및 개선 요청 사항',
-        '다. 제출 기한: 2025. 11. 30.',
-        '라. 제출 방법: 양식(별지 제1호)에 작성하여 메일 회신',
-    ]
-))
+1. **값 정리** — 수신자·제목·본문(위계별 배열)·붙임을 `values.json` 에 작성
+   (예시: [`examples/example_values_gongmun.json`](../examples/example_values_gongmun.json))
+   - `본문`(1./2./…), `본문_가나`(가./나./…), `본문_1)`, `본문_①` 등 위계별 배열로 입력하면
+     항목 수에 따라 단락이 **자동 확장**되고, 빈 배열은 해당 위계 단락이 출력에서 사라짐
+   - `수신자` 키만 넣으면 "수신" 라벨은 자동 부여
+2. **빌드** — `python3 scripts/fill_skeleton.py --format format_gongmun --values values.json --output out.hwpx`
+3. **본문 위계 동적 확장** — `python3 scripts/expand_gongmun_body.py out.hwpx`
+4. **자간 압축 해소** — `python3 scripts/fix_gongmun_body.py out.hwpx` · `python3 scripts/wrap_long_titles.py out.hwpx`
+5. **필수 후처리 + 검증** — `python3 scripts/fix_namespaces.py out.hwpx` → `python3 scripts/validate.py out.hwpx`
 
-parts.extend(make_gongmun_attachment(
-    files=['2025년 매장 운영실적 보고 양식 1부.']
-))
-
-parts.append(make_gongmun_signature(
-    organization='○○주식회사',
-    title='AI혁신처장'
-))
-
-parts.extend(make_gongmun_metadata(
-    drafter=('AI혁신처 ○○과장', '박○○'),
-    reviewer=('AI혁신처장', '박○○'),
-    cooperator=('', ''),
-    serial='AI혁신처-1234',
-    date='2025. 11. 5.',
-    address='○○시 ○○구 ○○로 1',
-    tel='02-0000-0000',
-    fax='02-0000-0001',
-    email='example@○○공사.com',
-    disclosure='대국민공개'
-))
+```bash
+python3 scripts/fill_skeleton.py --format format_gongmun --values values.json --output out.hwpx
+python3 scripts/expand_gongmun_body.py out.hwpx
+python3 scripts/fix_gongmun_body.py out.hwpx
+python3 scripts/wrap_long_titles.py out.hwpx
+python3 scripts/fix_namespaces.py out.hwpx
+python3 scripts/validate.py out.hwpx
 ```
 
-> 신규 함수 (hwpx_helpers.py 보강 대상):
-> - `make_gongmun_header(sender, receiver, via, title)`
-> - `make_gongmun_body(related_clause, main_paragraph, items)`
-> - `make_gongmun_attachment(files)` — `붙임` 자동 + `끝.` 자동
-> - `make_gongmun_signature(organization, title)` — 가운데 정렬, 직인 자리
-> - `make_gongmun_metadata(...)` — 하단 3줄 메타정보
+> 슬롯 구조(27개)와 각 슬롯 역할은 `templates/format_gongmun/skeleton_mapping.json` 참조.

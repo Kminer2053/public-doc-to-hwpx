@@ -173,65 +173,28 @@ A4, 여백 상30·하25·좌30·우25mm 기준 **약 38–42줄/쪽**.
 
 ---
 
-## 6. 빌드 시 hwpx_helpers.py 호출 패턴
+## 6. 빌드 워크플로우 (v3.5.0+ 통합 빌더)
 
-```python
-# 1. 표지 페이지
-parts.extend(make_cover_page_full(
-    company_logo='templates/format_full/○○공사_logo.png',
-    title='스마트 편의점 개발 추진계획',
-    subtitle='- 역구내 환경에 적합한 -',
-    date='2025. 11.',
-    department='AI혁신처',
-    approval_line=[
-        ('과장', '박○○'),
-        ('처장', '박○○'),
-        ('본부장', '이○○'),
-        ('대표이사', '박○○'),
-    ],
-    doc_meta={
-        '문서번호': 'AI혁신처-001',
-        '보존기간': '준영구 비공개(7)',
-        '보고일자': '2025. 11. 5.',
-    }
-))
-parts.append(make_page_break())
+> ⚠️ v3.3.x 까지의 `hwpx_helpers.py` 단락 빌더는 v3.4.0 에서 제거되었습니다.
+> 현재 풀버전은 **표준 양식 슬롯에 값만 채우는 방식**으로 빌드하며,
+> v3.5.0 부터 `build_full.py` 가 4대 함정(목차 위계 위반·빈 슬롯·마커 중복·페이지번호 미반영)을
+> 자동 검사하는 통합 빌드 워크플로우를 제공합니다.
 
-# 2. 목차 페이지
-parts.extend(make_toc_page(
-    title='목  차',
-    entries=[
-        ('Ⅰ. 추진배경 및 목적', 4),
-        ('Ⅱ. 추진계획(안)', 6),
-        ('Ⅲ. 추진일정', 14),
-        ('Ⅳ. 행정사항', 15),
-    ],
-    appendix=[
-        ('1. 개발 산출물 예시사례', 15),
-        ('2. 스마트화 전환 실사 필요매장', 23),
-    ]
-))
-parts.append(make_page_break())
+1. **값 정리** — 표지(제목·부제·결재선·문서메타)·목차·요약·본문(장/절/항 위계)·별첨을 `values.json` 에 작성
+   (예시: [`examples/example_values_full.json`](../examples/example_values_full.json))
+2. **통합 빌드** — `python3 scripts/build_full.py --values values.json --output out.hwpx`
+   - 내부적으로 `fill_skeleton` → `fix_namespaces` → `simulate_pages`(페이지번호 산출·목차 반영)
+     → `ensure_body_anchor`(본문 시작 pageBreak) → `wrap_long_titles`/`fix_toc_dots`(자간·점선 보정)
+     → `validate` 를 순서대로 실행
+3. **검증 결과 확인** — 4대 함정 리포트에 경고가 있으면 `values.json` 을 보정 후 재빌드
 
-# 3. 보고내용 요약 페이지
-parts.extend(make_summary_page(...))
-parts.append(make_page_break())
-
-# 4. 본문 (장·절·항 위계 자동)
-parts.extend(make_chapter('Ⅰ', '추진배경 및 목적', sections=[...]))
-parts.append(make_page_break())
-parts.extend(make_chapter('Ⅱ', '추진계획(안)', sections=[...]))
-# ...
+```bash
+python3 scripts/build_full.py --values values.json --output out.hwpx
 ```
 
-> 신규 함수 (hwpx_helpers.py 보강 대상):
-> - `make_cover_page_full(logo, title, subtitle, date, department, approval_line, doc_meta)` — 풀버전 표지 (결재선 표 포함)
-> - `make_toc_page(title, entries, appendix)` — 목차 페이지
-> - `make_summary_page(sections, side_boxes)` — 보고내용 요약 페이지
-> - `make_chapter(roman, title, sections)` — 장(章) 빌더 (자동 페이지 break)
-> - `make_section(arabic, title, items)` — 절(節) 빌더
-> - `make_subsection(korean, title, items)` — 목(目) 빌더 (가. 나. 다.)
-> - `make_page_break()` — 강제 페이지 분리
+> 슬롯 구조(127개, 페이지번호 포함)와 각 슬롯 역할은
+> `templates/format_full/skeleton_mapping.json` 참조.
+> 표지 결재선 표·목차 점선·장절 위계 표는 빌드 중 100% 보존됩니다.
 
 ---
 

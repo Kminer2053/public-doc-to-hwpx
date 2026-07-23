@@ -237,4 +237,5 @@ def build_email_md(payload: dict) -> str:
     return '\n'.join(lines)
 ```
 
-이메일 양식은 hwpx_helpers를 호출하지 않습니다. layout_optimizer.py만 적용.
+이메일 양식은 hwpx 빌더를 호출하지 않습니다. 텍스트(.md/.txt) 로만 출력하며,
+작성 원칙(개조식·두괄식·적/의/것/들 정리)은 Claude 가 본문 작성 시 직접 적용합니다.

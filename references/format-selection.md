@@ -42,7 +42,8 @@
   └─ 사용자에게 최종 확인 (옵션 1개 + 대안 1개 제시)
 ```
 
-분량 추정은 `layout_optimizer.estimate_lines()` 함수가 담당. 페이지당 38–42줄 가정.
+분량 추정은 개조식 변환 후 예상 줄 수로 판단. 페이지당 라인 수 기준은 양식별로 다르며
+(1p ≈ 37줄/여백 상25·하20, 풀버전 ≈ 38–42줄/여백 상30·하25) `references/layout-rules.md` §2 참조.
 
 ---
 
@@ -94,8 +95,8 @@
   │     - 자동 매핑 불가 시 사용자에게 매핑표 확인 요청
   │
   └─ 3-B 서식 추출형(Style-extract):
-        - hwpx_helpers.extract_secpr_and_colpr 로 서식 추출
-        - charPr/paraPr/borderFill ID를 참조 파일과 동일하게 사용
+        - make_skeleton.py 로 참조 파일을 빈 골격(slot 양식)으로 변환 → charPr/paraPr/borderFill 보존
+        - 참조 파일의 표·테두리·음영·페이지헤더가 그대로 유지됨
         - 콘텐츠는 4개 양식 중 가장 가까운 구조로 매핑
 ```
 
